@@ -1,11 +1,11 @@
-import { TeacherService } from './../teacher.service';
-import { ChapterService } from './../chapter.service';
-import { TeacherPlateService } from './../teacher-plate.service';
+import { ChapterService } from '../../services/chapter.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DateAdapter } from '@angular/material';
-import { Teacher } from '../teacher.model';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Teacher } from 'src/app/shared/models/teacher.model';
+import { TeacherService } from 'src/app/services/teacher.service';
+import { TeacherPlateService } from 'src/app/services/teacher-plate.service';
 
 @Component({
   selector: 'app-teacher-plate-form',

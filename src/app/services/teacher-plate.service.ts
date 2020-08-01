@@ -1,5 +1,5 @@
 import { Injectable, OnInit, Output, EventEmitter } from '@angular/core';
-import { TeacherPlate } from './teacher-plate.model';
+import { TeacherPlate } from '../shared/models/teacher-plate.model';
 
 @Injectable({
   providedIn: 'root'

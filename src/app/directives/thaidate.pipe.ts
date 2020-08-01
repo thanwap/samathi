@@ -4,34 +4,35 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'thaidate'
 })
 export class ThaiDatePipe implements PipeTransform {
+  thaiDay = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์']
+  shortThaiMonth = [
+      'ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.',
+      'ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'
+      ];
+  longThaiMonth = [
+      'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
+      'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'
+      ];
   transform(date: string, format: string): string {
-    let ThaiDay = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์']
-    let shortThaiMonth = [
-        'ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.',
-        'ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'
-        ];
-    let longThaiMonth = [
-        'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
-        'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'
-        ];
+
     let inputDate=new Date(date);
     let dataDate = [
         inputDate.getDay(),inputDate.getDate(),inputDate.getMonth(),inputDate.getFullYear()
         ];
     let outputDateFull = [
-        'วัน'+ThaiDay[dataDate[0]]+'ที่',
+        'วัน'+this.thaiDay[dataDate[0]]+'ที่',
         dataDate[1],
-        longThaiMonth[dataDate[2]],
+        this.longThaiMonth[dataDate[2]],
         (dataDate[3]+543)
     ];
     let outputDateShort = [
         dataDate[1],
-        shortThaiMonth[dataDate[2]],
+        this.shortThaiMonth[dataDate[2]],
         dataDate[3]+543
     ];
     let outputDateMedium = [
         dataDate[1],
-        longThaiMonth[dataDate[2]],
+        this.longThaiMonth[dataDate[2]],
         dataDate[3]+543
     ];
     let returnDate:string;

@@ -3,3 +3,26 @@
   margin: 0 auto;
   background: white;
 }
+
+nav {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+
+
+  .samathi-nav {
+    width: 80%;
+    margin: 0 auto;
+
+    button {
+      font-size: 1.4em;
+    }
+
+    button.active {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+}
+

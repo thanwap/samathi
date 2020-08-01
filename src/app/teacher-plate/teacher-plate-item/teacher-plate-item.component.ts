@@ -1,8 +1,8 @@
 import { ThaiDatePipe } from './../../directives/thaidate.pipe';
-import { TeacherPlateService } from './../teacher-plate.service';
+import { TeacherPlateService } from '../../services/teacher-plate.service';
 import { Component, OnInit, ElementRef, ViewChild, PipeTransform } from '@angular/core';
 import html2canvas from 'html2canvas';
-import { TeacherPlate } from '../teacher-plate.model';
+import { TeacherPlate } from '../../shared/models/teacher-plate.model';
 
 @Component({
   selector: 'app-teacher-plate-item',

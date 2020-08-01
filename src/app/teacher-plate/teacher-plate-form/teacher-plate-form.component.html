@@ -32,8 +32,8 @@
       <mat-form-field>
         <mat-label>ผู้บรรยาย</mat-label>
         <mat-select formControlName="teacherNameSelect">
-          <mat-option *ngFor="let teacher of teachers" [value]="teacher.fullName">
-            {{teacher.fullName}}
+          <mat-option *ngFor="let teacher of teachers" [value]="teacher.firstName">
+            {{teacher.firstName}}
           </mat-option>
         </mat-select>
       </mat-form-field>

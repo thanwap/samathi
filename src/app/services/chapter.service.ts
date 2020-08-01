@@ -14,8 +14,7 @@ export class ChapterService {
           resolve(result.map((action) => {
             return { key: action.key, value: action.payload.val() };
           }));
-        })
+        });
     });
-
   }
 }
