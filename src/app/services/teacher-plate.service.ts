@@ -19,8 +19,7 @@ export class TeacherPlateService implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getPlateInfo(): TeacherPlate {
     return this.plateInfo;

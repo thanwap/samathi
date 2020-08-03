@@ -4,6 +4,7 @@ export class Teacher {
   name: string;
   lastName: string;
   fullName: string;
+  fullNameForPicture: string;
   phoneNumber: string;
 
   constructor(id: string, prefix: string, name: string, lastName: string, phoneNumber: string = ''){
@@ -12,6 +13,7 @@ export class Teacher {
     this.name = name;
     this.lastName = lastName;
     this.fullName = `${prefix} ${name} ${lastName}`;
+    this.fullNameForPicture = `${prefix}${name} ${lastName}`;
     this.phoneNumber = phoneNumber;
   }
 }

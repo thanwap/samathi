@@ -43,18 +43,19 @@ export class TeacherService {
   }
 
   addTeachers(teachers: Teacher[]): Promise<number> {
+    console.log(teachers);
     return new Promise<number>((resolve, reject) => {
       let teacherItems = teachers.map((t) => {
-        return { prefix: t.prefix,
+        return {
+          prefix: t.prefix,
           name: t.name,
           lastName: t.lastName,
           phoneNumber: t.phoneNumber
         };
       });
 
-      const itemRef = this.db.list('teacher');
-
-      itemRef.push(teacherItems).then((t) => {
+      const itemRef = this.db.object('teacher');
+      itemRef.set(teacherItems).then((t) => {
         resolve(0);
       });
     });

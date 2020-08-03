@@ -74,7 +74,7 @@ export class ScheduleManagementComponent implements OnInit {
       let chapter = new Chapter(data[3].trim(), data[4].trim());
       let teacher = new Teacher('', data[5].trim(), data[6].trim(), data[7].trim(), data[8].trim());
 
-      if (teacherDic[teacher.fullName]) {
+      if (!teacherDic[teacher.fullName]) {
         teacher.id = teacherDic[teacher.fullName].id;
       }
 

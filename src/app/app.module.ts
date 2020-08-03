@@ -24,6 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
+import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ScheduleManagementComponent } from './schedule-management/schedule-mana
     TeacherPlateFormComponent,
     TeacherPlateItemComponent,
     ThaiDatePipe,
-    ScheduleManagementComponent
+    ScheduleManagementComponent,
+    TeacherManagementComponent
   ],
   imports: [
     BrowserModule,
