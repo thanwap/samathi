@@ -62,6 +62,8 @@ MIT
 
 @angular/fire/database
 
+@angular/fire/storage
+
 @angular/forms
 MIT
 
@@ -120,6 +122,9 @@ Apache-2.0
 @firebase/logger
 Apache-2.0
 
+@firebase/storage
+Apache-2.0
+
 @firebase/util
 Apache-2.0
 
@@ -149,6 +154,8 @@ THE SOFTWARE.
 firebase/app
 
 firebase/database
+
+firebase/storage
 
 hammerjs
 MIT
