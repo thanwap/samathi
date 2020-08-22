@@ -104,6 +104,8 @@ THE SOFTWARE.
 
 @angular/material/select
 
+@angular/material/table
+
 @angular/platform-browser
 MIT
 
