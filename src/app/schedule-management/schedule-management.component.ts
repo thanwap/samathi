@@ -13,6 +13,8 @@ import { Teacher } from '../shared/models/teacher.model';
 })
 export class ScheduleManagementComponent implements OnInit {
   public schedules: any[] = [];
+  public scheduleList: any[] = [];
+  displayedColumns: string[] = ['date', 'chapterName', 'teacherName', 'teacherImage'];
 
   constructor(
     private thaiDatePipe: ThaiDatePipe,
@@ -21,7 +23,15 @@ export class ScheduleManagementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.teacherService.getTeachers().then(x => console.log(x));
+    this.scheduleService.listSchedule().then(x => {
+      this.scheduleList = x;
+      this.scheduleList.map(y => {
+        y.teacher.imagePath = `./assets/img/teacher/${y.teacher.prefix}${y.teacher.name} ${y.teacher.lastName}.jpg`;
+        return y;
+      });
+      console.log(this.scheduleList);
+    });
+    // this.teacherService.getTeachers().then(x => console.log(x));
     // this.scheduleService.listSchedule().then((schedule) => {
     //   if (schedule && schedule.length > 0) {
     //   }

@@ -142,7 +142,7 @@ export class TeacherPlateFormComponent implements OnInit {
             s.teacher.lastName
           );
           this.getBase64ImageFromUrl(
-            `../../../assets/img/teacher/${teacher.fullNameForPicture}.jpg`
+            `./assets/img/teacher/${teacher.fullNameForPicture}.jpg`
           ).then((x) => {
             this.imageBase64String = x;
           });

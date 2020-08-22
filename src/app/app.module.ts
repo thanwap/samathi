@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableModule } from '@angular/material/table';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 
@@ -21,10 +22,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,11 @@ import { TeacherManagementComponent } from './teacher-management/teacher-managem
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -48,11 +53,12 @@ import { TeacherManagementComponent } from './teacher-management/teacher-managem
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
     DragDropModule,
     MatIconModule,
     ImageCropperModule
   ],
-  providers: [ThaiDatePipe],
+  providers: [ThaiDatePipe, { provide: BUCKET, useValue: 'gs://samathi-f1b98.appspot.com' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

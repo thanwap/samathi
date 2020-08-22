@@ -1,2 +1,46 @@
+<div>
+  <mat-table [dataSource]="scheduleList" >
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> วันที่ </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date | thaidate:"medium"}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="chapterName">
+      <mat-header-cell *matHeaderCellDef> หัวข้อ </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.chapter.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherName">
+      <mat-header-cell *matHeaderCellDef> ผู้บรรยาย </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.teacher.fullName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherImage">
+      <mat-header-cell *matHeaderCellDef> รูป </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <img class="teacher-image"
+          [src]="row.teacher.imagePath"
+          alt="">
+        <!-- <img class="teacher-image" [src]="row.teacher.imagePath" onerror="this.onerror=null; this.src='./assets/img/teacher/20200210_00001_001.jpg'" alt=""> -->
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherImagePath">
+      <mat-header-cell *matHeaderCellDef> Path </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+       {{row.teacher.imagePath}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <!-- <div *ngFor="let item of scheduleList">
+    <div>
+      <span>{{item.date | thaidate:"medium"}}</span><span>{{item.chapter.name}}</span>
+    </div>
+  </div> -->
+</div>
+
 <input type="file" #fileImportInput name="File Upload"
 id="txtFileUpload" (change)="fileChangeListener($event)" accept=".csv" />
