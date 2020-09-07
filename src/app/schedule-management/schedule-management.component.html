@@ -21,7 +21,6 @@
         <img class="teacher-image"
           [src]="row.teacher.imagePath"
           alt="">
-        <!-- <img class="teacher-image" [src]="row.teacher.imagePath" onerror="this.onerror=null; this.src='./assets/img/teacher/20200210_00001_001.jpg'" alt=""> -->
       </mat-cell>
     </ng-container>
 
@@ -35,12 +34,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <!-- <div *ngFor="let item of scheduleList">
-    <div>
-      <span>{{item.date | thaidate:"medium"}}</span><span>{{item.chapter.name}}</span>
-    </div>
-  </div> -->
 </div>
-
-<input type="file" #fileImportInput name="File Upload"
-id="txtFileUpload" (change)="fileChangeListener($event)" accept=".csv" />

@@ -25,7 +25,7 @@ export class TeacherPlateService implements OnInit {
     return this.plateInfo;
   }
 
-  setDate(date: Date) : void {
+  setDate(date: Date): void {
     this.plateInfo.date = date;
   }
 
@@ -42,10 +42,11 @@ export class TeacherPlateService implements OnInit {
   }
 
   setPlateWidth(width: number): void {
-    if(width >= this.minPlateWidth)
+    if (width >= this.minPlateWidth) {
         this.plateInfo.plateWidth = width;
-    else
+    } else {
     this.plateInfo.plateWidth = this.defaultPlateWidth;
+    }
   }
 
   setBookNumber(bookNumber: number): void {

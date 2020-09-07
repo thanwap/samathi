@@ -1,3 +1,4 @@
+import { UploadComponent } from './upload/upload.component';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent },
   { path: 'teacher-management', component: TeacherManagementComponent},
   { path: 'schedule-management', component: ScheduleManagementComponent},
+  { path: 'upload', component: UploadComponent},
   { path: '',
     redirectTo: '/plate',
     pathMatch: 'full'

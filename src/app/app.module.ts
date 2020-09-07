@@ -28,6 +28,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     TeacherPlateItemComponent,
     ThaiDatePipe,
     ScheduleManagementComponent,
-    TeacherManagementComponent
+    TeacherManagementComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
