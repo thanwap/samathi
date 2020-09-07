@@ -2,7 +2,7 @@
   <mat-table [dataSource]="scheduleList" >
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> วันที่ </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.date | thaidate:"medium"}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.date | thaidate:"full"}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="chapterName">
