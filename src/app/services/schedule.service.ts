@@ -11,7 +11,7 @@ export class ScheduleService {
 
   getScheduleByDate(date: string) {
     return new Promise<ScheduleItem[]>((resolve, reject) => {
-      this.db.list<ScheduleItem>('/schedule',
+      this.db.list<ScheduleItem>('/schedule_temp',
         ref => ref
           .orderByChild('date').equalTo(date)).valueChanges()
         .subscribe(result => {
@@ -22,7 +22,7 @@ export class ScheduleService {
 
   listSchedule() {
     return new Promise<ScheduleItem[]>((resolve, reject) => {
-      this.db.list<ScheduleItem>('/schedule').valueChanges()
+      this.db.list<ScheduleItem>('/schedule_temp').valueChanges()
         .subscribe(result => {
           resolve(result);
         });
@@ -31,8 +31,7 @@ export class ScheduleService {
 
   importSchedule(schedule: ScheduleItem[]) {
     console.log(schedule);
-    const itemRef = this.db.object('/schedule');
-    itemRef.remove();
+    const itemRef = this.db.object('/schedule_temp');
     itemRef.set(schedule);
   }
 }

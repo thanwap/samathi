@@ -11,7 +11,7 @@ export class TeacherService {
 
   getTeachers(): Promise<Teacher[]> {
     return new Promise<Teacher[]>((resolve, reject) => {
-      this.db.list('/teacher')
+      this.db.list('/teacher_temp')
       .snapshotChanges()
       .subscribe(result => {
         resolve(result.map(action => {
@@ -34,7 +34,7 @@ export class TeacherService {
     };
 
     return new Promise<number>((resolve, reject) => {
-      const itemRef = this.db.list('teacher');
+      const itemRef = this.db.list('teacher_temp');
 
       itemRef.push(teacherItem).then((t) => {
         resolve(0);
@@ -42,7 +42,7 @@ export class TeacherService {
     });
   }
 
-  addTeachers(teachers: Teacher[]): Promise<number> {
+  addTeachers(teachers: any){
     console.log(teachers);
     return new Promise<number>((resolve, reject) => {
       let teacherItems = teachers.map((t) => {
@@ -54,10 +54,8 @@ export class TeacherService {
         };
       });
 
-      const itemRef = this.db.object('teacher');
-      itemRef.set(teacherItems).then((t) => {
-        resolve(0);
-      });
+      const itemRef = this.db.object('teacher_temp');
+      itemRef.set(teacherItems);
     });
 
   }

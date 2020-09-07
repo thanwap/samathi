@@ -7,7 +7,7 @@ export class Teacher {
   fullNameForPicture: string;
   phoneNumber: string;
 
-  constructor(id: string, prefix: string, name: string, lastName: string, phoneNumber: string = ''){
+  constructor(id: string, prefix: string, name: string, lastName: string, phoneNumber: string = '') {
     this.id = id;
     this.prefix = prefix;
     this.name = name;

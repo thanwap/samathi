@@ -21,7 +21,9 @@ export class ScheduleManagementComponent implements OnInit {
     this.scheduleService.listSchedule().then(x => {
       this.scheduleList = x;
       this.scheduleList.map(y => {
-        y.teacher.imagePath = `./assets/img/teacher/${y.teacher.prefix}${y.teacher.name} ${y.teacher.lastName}.jpg`;
+        if (y.teacher) {
+          y.teacher.imagePath = `./assets/img/teacher/${y.teacher.prefix}${y.teacher.name} ${y.teacher.lastName}.jpg`;
+        }
         return y;
       });
     });

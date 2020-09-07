@@ -12,14 +12,14 @@
 
     <ng-container matColumnDef="teacherName">
       <mat-header-cell *matHeaderCellDef> ผู้บรรยาย </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.teacher.fullName}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.teacher ? row.teacher.fullName : ''}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="teacherImage">
       <mat-header-cell *matHeaderCellDef> รูป </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <img class="teacher-image"
-          [src]="row.teacher.imagePath"
+          [src]="row.teacher ? row.teacher.imagePath : ''"
           alt="">
       </mat-cell>
     </ng-container>

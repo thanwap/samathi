@@ -1,5 +1,5 @@
+import { Teacher } from './../shared/models/teacher.model';
 import { Component, OnInit } from '@angular/core';
-import { Teacher } from '../shared/models/teacher.model';
 import { ScheduleItem } from '../shared/models/schedule-item.model';
 import { Chapter } from '../shared/models/chapter.model';
 import { ThaiDatePipe } from '../directives/thaidate.pipe';
@@ -22,25 +22,43 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {}
 
-  fileChangeListener($event: any): void {
+  async fileChangeListener($event: any): Promise<void> {
     const files = $event.srcElement.files;
+
+    let teacherList = await this.teacherService.getTeachers();
+    let scheduleList = await this.scheduleService.listSchedule();
 
     if (this.isCSVFile(files[0])) {
       const input = $event.target;
       const reader = new FileReader();
       reader.readAsText(input.files[0]);
 
-      reader.onload = (data) => {
+      reader.onload = async (data) => {
         const csvData = reader.result;
         const csvRecordsArray = (csvData as string).split(/\r\n|\n/);
 
-        this.teacherService.getTeachers().then((teachers) => {
-          this.schedules = this.getSchedulesFromCSVFile(
-            csvRecordsArray,
-            teachers
-          );
-          this.scheduleService.importSchedule(this.schedules);
+        this.schedules = this.getSchedulesFromCSVFile(csvRecordsArray);
+        console.log(this.schedules);
+        let teachers = this.schedules
+          .map((x) => {
+            let teacher = Object.assign({}, x.teacher);
+            delete teacher.id;
+            return teacher;
+          })
+          .filter((x) => x.prefix !== '');
+
+        teachers = this.distinctTeacher(teachers);
+        this.teacherService.addTeachers(
+          teachers.filter((x) => !teacherList.includes(x.fullName))
+        );
+        teachers = await this.teacherService.getTeachers();
+        this.schedules.forEach((s) => {
+          s.teacher =
+            teachers.find((x) => x.fullName === s.teacher.fullName) || null;
         });
+        let s = [...scheduleList].concat(this.schedules);
+        s = this.distinctSchedule(s);
+        this.scheduleService.importSchedule(s);
       };
 
       reader.onerror = () => {
@@ -52,15 +70,10 @@ export class UploadComponent implements OnInit {
     }
   }
 
-  getSchedulesFromCSVFile(rows: any, teachers: Teacher[]): ScheduleItem[] {
+  getSchedulesFromCSVFile(rows: any): ScheduleItem[] {
     const schedules = [];
 
-    let teacherDic = teachers.reduce((obj, t) => {
-      obj[t.fullName] = t;
-      return obj;
-    }, {});
-
-    for (let i = 4; i < rows.length; i++) {
+    for (let i = 3; i < rows.length; i++) {
       const data = rows[i].split(',');
 
       if (data.length <= 1) {
@@ -76,10 +89,6 @@ export class UploadComponent implements OnInit {
         data[8].trim()
       );
 
-      if (!teacherDic[teacher.fullName]) {
-        teacher.id = teacherDic[teacher.fullName].id;
-      }
-
       schedules.push(
         new ScheduleItem(data[1].trim(), data[2].trim(), chapter, teacher)
       );
@@ -93,4 +102,33 @@ export class UploadComponent implements OnInit {
   }
 
   fileReset() {}
+
+  distinctTeacher(teachers: any) {
+    let result = [];
+    let temp = {};
+
+    teachers.forEach((x) => {
+      if (!temp.hasOwnProperty(x.fullName)) {
+        temp[x.fullName] = '';
+        result.push(x);
+      }
+    });
+
+    return result;
+  }
+
+  distinctSchedule(schedules: any) {
+    let result = [];
+    let temp = {};
+
+    schedules.forEach((x) => {
+      if (!temp.hasOwnProperty(x.date)) {
+        temp[x.date] = '';
+        result.push(x);
+      }
+    });
+
+    return result;
+
+  }
 }
