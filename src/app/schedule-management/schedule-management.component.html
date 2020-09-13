@@ -1,37 +1,49 @@
 <div>
-  <mat-table [dataSource]="scheduleList" >
+  <mat-table [dataSource]="scheduleList">
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> วันที่ </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.date | thaidate:"full"}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.date | thaidate: "full" }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="chapterName">
       <mat-header-cell *matHeaderCellDef> หัวข้อ </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.chapter.name}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.chapter.name }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="teacherName">
       <mat-header-cell *matHeaderCellDef> ผู้บรรยาย </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.teacher ? row.teacher.fullName : ''}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.teacher ? row.teacher.fullName : "" }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="teacherImage">
       <mat-header-cell *matHeaderCellDef> รูป </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <img class="teacher-image"
+        <img
+          class="teacher-image"
           [src]="row.teacher ? row.teacher.imagePath : ''"
-          alt="">
+          alt=""
+        />
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="teacherImagePath">
       <mat-header-cell *matHeaderCellDef> Path </mat-header-cell>
       <mat-cell *matCellDef="let row">
-       {{row.teacher.imagePath}}
+        {{ row.teacher.imagePath }}
       </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row
+      [ngClass]="{
+        previous: row.dayStatus === 'previous',
+        today: row.dayStatus === 'today'
+      }"
+      *matRowDef="let row; columns: displayedColumns"
+    ></mat-row>
   </mat-table>
 </div>

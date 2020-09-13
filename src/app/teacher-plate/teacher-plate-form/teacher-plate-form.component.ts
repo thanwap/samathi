@@ -37,13 +37,13 @@ export class TeacherPlateFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.chapterService.getChapters().then((result) => {
-      this.chapters = result;
-    });
+    // this.chapterService.getChapters().then((result) => {
+    //   this.chapters = result;
+    // });
 
-    this.teacherService.getTeachers().then((result) => {
-      this.teachers = result;
-    });
+    // this.teacherService.getTeachers().then((result) => {
+    //   this.teachers = result;
+    // });
 
     let plateInfo = this.teacherPlateService.getPlateInfo();
 
@@ -131,12 +131,13 @@ export class TeacherPlateFormComponent implements OnInit {
       if (schedules && schedules.length > 0) {
         let s = schedules[0];
         this.teacherForm.patchValue({
-          title: s.chapter ? s.chapter.name : "",
-          teacherName: s.teacher ? s.teacher.fullName : "",
+          title: s.chapter ? s.chapter.name : '',
+          teacherName: s.teacher ? s.teacher.fullName : '',
+          bookNumber: s.chapter ? + s.chapter.name.substring(0, 1) : 1
         });
         if (s.teacher && s.teacher.fullName) {
           let teacher = new Teacher(
-            "",
+            '',
             s.teacher.prefix,
             s.teacher.name,
             s.teacher.lastName

@@ -1,8 +1,17 @@
-.mat-column-date{
+.mat-column-date {
   flex: none;
   width: 180px !important;
 }
-.teacher-image{
+
+.teacher-image {
   width: 30%;
   max-width: 120px;
+}
+
+.previous {
+  background-color: #cccccc;
+}
+
+.today {
+  background-color: #3cb371;
 }
