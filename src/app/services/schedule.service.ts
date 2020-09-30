@@ -9,6 +9,13 @@ export class ScheduleService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  getScheduleById(id: number) {
+    this.db.object('schedule_temp/' + id).valueChanges()
+      .subscribe(x => {
+        console.log(x);
+      });
+  }
+
   getScheduleByDate(date: string) {
     return new Promise<ScheduleItem[]>((resolve, reject) => {
       this.db.list<ScheduleItem>('/schedule_temp',

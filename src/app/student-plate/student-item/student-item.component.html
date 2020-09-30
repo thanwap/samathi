@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="edit-image">
+    <div class="cropper">
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 4"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"
+      >
+      </image-cropper>
+    </div>
+  </div>
+  <div>
+    <form style="font-size: 10px" [formGroup]="form">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>รหัส</mat-label>
+          <input
+            [(ngModel)]="student.id"
+            matInput
+            placeholder="รหัส"
+            type="text"
+            formControlName="id"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อ</mat-label>
+          <input
+            [(ngModel)]="student.name"
+            matInput
+            placeholder="ชื่อ"
+            type="text"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>นามสกุล</mat-label>
+          <input
+            [(ngModel)]="student.lastName"
+            matInput
+            placeholder="นามสกุล"
+            type="text"
+            formControlName="lastName"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input
+            [(ngModel)]="student.nameEn"
+            matInput
+            placeholder="Name"
+            type="text"
+            formControlName="nameEn"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input
+            [(ngModel)]="student.lastNameEn"
+            matInput
+            placeholder="Last Name"
+            type="text"
+            formControlName="lastNameEn"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+    <div>
+      <input type="file" (change)="fileChangeEvent($event)" />
+    </div>
+  </div>
+  <app-studen-card [student]="student"></app-studen-card>
+</div>

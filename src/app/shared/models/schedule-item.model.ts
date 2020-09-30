@@ -12,10 +12,10 @@ export class ScheduleItem {
     date: string,
     time: string,
     chapter: Chapter,
-    teacher: Teacher){
-      this.setDateTime(date, time);
-      this.chapter = chapter;
-      this.teacher = teacher;
+    teacher: Teacher) {
+    this.setDateTime(date, time);
+    this.chapter = chapter;
+    this.teacher = teacher;
   }
 
   setDateTime(date: string, timeString: string) {

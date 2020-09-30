@@ -14,10 +14,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class TeacherPlateItemComponent implements OnInit {
   plateInfo: TeacherPlate;
 
-  @ViewChild('plate', {static: false}) plate: ElementRef;
-  @ViewChild('plateDummy', {static: false}) plateDummy: ElementRef;
-  @ViewChild('canvas', {static: false}) canvas: ElementRef;
-  @ViewChild('downloadLink', {static: false}) downloadLink: ElementRef;
+  @ViewChild('plate', { static: false }) plate: ElementRef;
+  @ViewChild('plateDummy', { static: false }) plateDummy: ElementRef;
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
+  @ViewChild('downloadLink', { static: false }) downloadLink: ElementRef;
 
   constructor(
     public teacherPlateService: TeacherPlateService,
@@ -37,7 +37,7 @@ export class TeacherPlateItemComponent implements OnInit {
       this.canvas.nativeElement.src = canvas.toDataURL();
       this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
       this.downloadLink.nativeElement.download =
-        this.pipe.transform(this.plateInfo.date.toString(),'short')
+        this.pipe.transform(this.plateInfo.date.toString(), 'short')
         + ' ' + this.plateInfo.title + ' ' + this.plateInfo.teacherName + '.png';
       this.downloadLink.nativeElement.click();
     });
@@ -45,7 +45,7 @@ export class TeacherPlateItemComponent implements OnInit {
 
   sendToLine() {
     let fileName = this.pipe.transform(this.plateInfo.date.toString(), 'short')
-    + ' ' + this.plateInfo.title + ' ' + this.plateInfo.teacherName + '.png';
+      + ' ' + this.plateInfo.title + ' ' + this.plateInfo.teacherName + '.png';
     const body = {
       date: this.pipe.transform(this.plateInfo.date.toString(), 'thaidate'),
       title: this.plateInfo.title,

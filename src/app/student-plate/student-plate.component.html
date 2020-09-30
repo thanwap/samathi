@@ -1,0 +1,22 @@
+<div>
+  <div *ngFor="let student of students">
+    <app-student-item [student]="student"></app-student-item>
+  </div>
+</div>
+<div class="container-button">
+  <button (click)="onAddStudent()" mat-button color="primary">เพิ่ม</button>
+  <button
+    [useExistingCss]="true"
+    printSectionId="print-section"
+    mat-button
+    color="primary"
+    ngxPrint
+  >
+    print
+  </button>
+</div>
+<div id="print-section">
+  <div class="card-container" *ngFor="let student of students">
+    <app-studen-card [student]="student"></app-studen-card>
+  </div>
+</div>

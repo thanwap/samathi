@@ -29,6 +29,13 @@ import { ScheduleManagementComponent } from './schedule-management/schedule-mana
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogScheduleComponent } from './schedule-management/dialog-schedule/dialog-schedule.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { StudentPlateComponent } from './student-plate/student-plate.component';
+import { StudentItemComponent } from './student-plate/student-item/student-item.component';
+import { NgxPrintModule } from 'ngx-print';
+import { StudenCardComponent } from './student-plate/studen-card/studen-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +46,11 @@ import { UploadComponent } from './upload/upload.component';
     ThaiDatePipe,
     ScheduleManagementComponent,
     TeacherManagementComponent,
-    UploadComponent
+    UploadComponent,
+    DialogScheduleComponent,
+    StudentPlateComponent,
+    StudentItemComponent,
+    StudenCardComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +67,15 @@ import { UploadComponent } from './upload/upload.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    MatDialogModule,
+    MatAutocompleteModule,
     DragDropModule,
     MatIconModule,
-    ImageCropperModule
+    ImageCropperModule,
+    NgxPrintModule
+  ],
+  entryComponents: [
+    DialogScheduleComponent
   ],
   providers: [ThaiDatePipe, { provide: BUCKET, useValue: 'gs://samathi-f1b98.appspot.com' }],
   bootstrap: [AppComponent]

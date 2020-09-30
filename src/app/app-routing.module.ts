@@ -4,14 +4,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeacherPlateComponent } from './teacher-plate/teacher-plate.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
+import { StudentPlateComponent } from './student-plate/student-plate.component';
 
 
 const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent },
-  { path: 'teacher-management', component: TeacherManagementComponent},
-  { path: 'schedule-management', component: ScheduleManagementComponent},
-  { path: 'upload', component: UploadComponent},
-  { path: '',
+  { path: 'studentPlate', component: StudentPlateComponent },
+  { path: 'teacher-management', component: TeacherManagementComponent },
+  { path: 'schedule-management', component: ScheduleManagementComponent },
+  { path: 'upload', component: UploadComponent },
+  {
+    path: '',
     redirectTo: '/plate',
     pathMatch: 'full'
   },

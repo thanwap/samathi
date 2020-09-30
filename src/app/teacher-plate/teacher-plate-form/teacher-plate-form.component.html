@@ -3,8 +3,11 @@
     <p>
       <mat-form-field>
         <mat-label>วันที่</mat-label>
-        <input matInput [matDatepicker]="pickerDate" formControlName="date">
-        <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+        <input matInput [matDatepicker]="pickerDate" formControlName="date" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDate"
+        ></mat-datepicker-toggle>
         <mat-datepicker #pickerDate></mat-datepicker>
       </mat-form-field>
     </p>
@@ -13,7 +16,7 @@
         <mat-label>หัวข้อ</mat-label>
         <mat-select formControlName="titleSelect">
           <mat-option *ngFor="let chapter of chapters" [value]="chapter.value">
-            {{chapter.value}}
+            {{ chapter.value }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -25,15 +28,19 @@
           matInput
           placeholder="หัวข้อ"
           type="text"
-          formControlName="title">
+          formControlName="title"
+        />
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
         <mat-label>ผู้บรรยาย</mat-label>
         <mat-select formControlName="teacherNameSelect">
-          <mat-option *ngFor="let teacher of teachers" [value]="teacher.fullName">
-            {{teacher.fullName}}
+          <mat-option
+            *ngFor="let teacher of teachers"
+            [value]="teacher.fullName"
+          >
+            {{ teacher.fullName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -45,7 +52,8 @@
           matInput
           placeholder="ผู้บรรยาย"
           type="text"
-          formControlName="teacherName">
+          formControlName="teacherName"
+        />
       </mat-form-field>
     </p>
     <p>
@@ -55,7 +63,8 @@
           matInput
           placeholder="ความกว้าง"
           type="number"
-          formControlName="plateWidth">
+          formControlName="plateWidth"
+        />
       </mat-form-field>
     </p>
     <p>
@@ -65,30 +74,35 @@
           matInput
           placeholder="เล่มที่"
           type="number"
-          formControlName="bookNumber">
+          formControlName="bookNumber"
+        />
       </mat-form-field>
     </p>
-    <input type='file' (change)="fileChangeEvent($event);" />
-    <image-cropper *ngIf="imageBase64String"
-    [imageChangedEvent]="imageChangedEvent"
-    [imageBase64]="imageBase64String"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="4 / 4"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded()"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()">
+    <input type="file" (change)="fileChangeEvent($event)" />
+    <image-cropper
+      *ngIf="imageBase64String"
+      [imageChangedEvent]="imageChangedEvent"
+      [imageBase64]="imageBase64String"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 4"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    >
     </image-cropper>
-    <image-cropper *ngIf="!imageBase64String"
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="4 / 4"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded()"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()">
+    <image-cropper
+      *ngIf="!imageBase64String"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 4"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    >
     </image-cropper>
   </form>
 </div>

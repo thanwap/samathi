@@ -1,39 +1,42 @@
-
 <div #plate [style.width.px]="plateInfo.plateWidth" class="plate plate-main">
-  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt=""></div>
+  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt="" /></div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
-      <div>{{plateInfo.date.toString() | thaidate: 'full'}}</div>
-      <div>หัวข้อ : {{plateInfo.title}}</div>
-      <div>ผู้บรรยาย : {{plateInfo.teacherName}}</div>
+      <div>{{ plateInfo.date.toString() | thaidate: "full" }}</div>
+      <div>หัวข้อ : {{ plateInfo.title }}</div>
+      <div>ผู้บรรยาย : {{ plateInfo.teacherName }}</div>
     </div>
   </div>
   <div class="plate-picture">
-    <img [src]="plateInfo.image" alt="">
+    <img [src]="plateInfo.image" alt="" />
   </div>
   <div class="plate-footer-wrap">
     <div class="plate-footer">
-      <div>หนังสือครูสมาธิ เล่ม {{plateInfo.bookNumber}}</div>
+      <div>หนังสือครูสมาธิ เล่ม {{ plateInfo.bookNumber }}</div>
       <div>พระพรหมมงคลญาณ วิ. (หลวงพ่อวิริยังค์ สิรินฺธโร)</div>
     </div>
   </div>
 </div>
 
-<div #plateDummy [style.width.px]="plateInfo.plateWidth" class="plate plate-dummy">
-  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt=""></div>
+<div
+  #plateDummy
+  [style.width.px]="plateInfo.plateWidth"
+  class="plate plate-dummy"
+>
+  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt="" /></div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
-      <div>{{plateInfo.date.toString() | thaidate: 'full'}}</div>
-      <div>หัวข้อ : {{plateInfo.title}}</div>
-      <div>ผู้บรรยาย : {{plateInfo.teacherName}}</div>
+      <div>{{ plateInfo.date.toString() | thaidate: "full" }}</div>
+      <div>หัวข้อ : {{ plateInfo.title }}</div>
+      <div>ผู้บรรยาย : {{ plateInfo.teacherName }}</div>
     </div>
   </div>
   <div class="plate-picture">
-    <img [src]="plateInfo.image" alt="">
+    <img [src]="plateInfo.image" alt="" />
   </div>
   <div class="plate-footer-wrap">
     <div class="plate-footer">
-      <div>หนังสือครูสมาธิ เล่ม {{plateInfo.bookNumber}}</div>
+      <div>หนังสือครูสมาธิ เล่ม {{ plateInfo.bookNumber }}</div>
       <div>พระพรหมมงคลญาณ วิ. (หลวงพ่อวิริยังค์ สิรินฺธโร)</div>
     </div>
   </div>
@@ -41,10 +44,13 @@
 
 <div class="plate-button">
   <div class="plate-download">
-    <button (click)="downloadImage()" mat-raised-button color="primary">Download</button>
-    <button (click)="sendToLine()" mat-raised-button color="secondary">Send to line</button>
-    <img class="canvas" #canvas>
+    <button (click)="downloadImage()" mat-raised-button color="primary">
+      Download
+    </button>
+    <button (click)="sendToLine()" mat-raised-button color="secondary">
+      Send to line
+    </button>
+    <img class="canvas" #canvas />
     <a #downloadLink></a>
   </div>
 </div>
-
