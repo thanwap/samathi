@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
@@ -36,6 +37,8 @@ import { StudentPlateComponent } from './student-plate/student-plate.component';
 import { StudentItemComponent } from './student-plate/student-item/student-item.component';
 import { NgxPrintModule } from 'ngx-print';
 import { StudenCardComponent } from './student-plate/studen-card/studen-card.component';
+import { LoginComponent } from './login/login.component';
+import { MatCard, MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { StudenCardComponent } from './student-plate/studen-card/studen-card.com
     DialogScheduleComponent,
     StudentPlateComponent,
     StudentItemComponent,
-    StudenCardComponent
+    StudenCardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import { StudenCardComponent } from './student-plate/studen-card/studen-card.com
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -69,6 +74,7 @@ import { StudenCardComponent } from './student-plate/studen-card/studen-card.com
     MatTableModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatCardModule,
     DragDropModule,
     MatIconModule,
     ImageCropperModule,

@@ -1,19 +1,18 @@
-.main {
-  width: 80%;
-  margin: 0 auto;
-  background: white;
-}
 
-nav {
-  position: relative;
-  width: 100%;
-  padding: 10px 0;
-  border-bottom: 1px solid black;
-
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   .samathi-nav {
+    position: relative;
     width: 80%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
 
     button {
       font-size: 1.4em;
@@ -23,6 +22,18 @@ nav {
       text-decoration: underline;
       font-weight: bold;
     }
+
+    .samathi-nav-logout {
+      margin-left: auto;
+    }
+  }
+
+  .main {
+    width: 80%;
+    margin: 0 auto;
+    flex-grow: 1;
   }
 }
+
+
 

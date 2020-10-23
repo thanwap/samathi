@@ -81,6 +81,7 @@
     <input type="file" (change)="fileChangeEvent($event)" />
     <image-cropper
       *ngIf="imageBase64String"
+      [autoCrop]="true"
       [imageChangedEvent]="imageChangedEvent"
       [imageBase64]="imageBase64String"
       [maintainAspectRatio]="true"
@@ -94,6 +95,7 @@
     </image-cropper>
     <image-cropper
       *ngIf="!imageBase64String"
+      [autoCrop]="true"
       [imageChangedEvent]="imageChangedEvent"
       [maintainAspectRatio]="true"
       [aspectRatio]="4 / 4"

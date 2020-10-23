@@ -1,13 +1,15 @@
 $card-height: 5.3cm;
 $card-width: 8.6cm;
 $card-padding: 0cm;
-$card-image-width: 2.5cm;
+$card-image-width: 2.05cm;
 
 .card {
   -webkit-print-color-adjust: exact !important;
   height: calc(#{$card-height} - (2 * #{$card-padding}));
   width: calc(#{$card-width} - (2 *#{$card-padding}));
-  background-color: white;
+  background: url(../../../assets/img/plate/student_plate_1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   color: black;
   padding: $card-padding;
   display: flex;
@@ -15,14 +17,16 @@ $card-image-width: 2.5cm;
   border: 1px solid black;
 
   .card-text {
+    font-family: 'THSarabunBold';
     padding-left: 0.5cm;
-    padding-top: 2.5cm;
+    padding-top: 3.1cm;
     width: calc(#{$card-width} - #{$card-image-width});
   }
 
+
   .card-image {
-    padding-top: 1.7cm;
-    padding-right: 0.5cm;
+    padding-top: 2.6cm;
+    padding-right: 0.45cm;
     width: $card-image-width;
   }
 }

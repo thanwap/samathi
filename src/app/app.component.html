@@ -1,30 +1,31 @@
-<div>
-  <nav>
-    <div class="samathi-nav">
-      <button routerLink="/plate" routerLinkActive="active" mat-button>
-        ป้ายชื่ออาจารย์
-      </button>
-      <button routerLink="/studentPlate" routerLinkActive="active" mat-button>
-        ป้ายชื่อนักเรียน
-      </button>
-      <button
-        routerLink="/teacher-management"
-        routerLinkActive="active"
-        mat-button
-      >
-        อาจารย์
-      </button>
-      <button
-        routerLink="/schedule-management"
-        routerLinkActive="active"
-        mat-button
-      >
-        ตารางสอน
-      </button>
-      <button routerLink="/upload" routerLinkActive="active" mat-button>
-        อัพโหลด
-      </button>
-    </div>
+<div class="container">
+  <nav class="samathi-nav">
+    <button routerLink="/plate" routerLinkActive="active" mat-button>
+      ป้ายชื่ออาจารย์
+    </button>
+    <button routerLink="/studentPlate" routerLinkActive="active" mat-button>
+      ป้ายชื่อนักเรียน
+    </button>
+    <button
+      routerLink="/teacher-management"
+      routerLinkActive="active"
+      mat-button
+    >
+      อาจารย์
+    </button>
+    <button
+      routerLink="/schedule-management"
+      routerLinkActive="active"
+      mat-button
+    >
+      ตารางสอน
+    </button>
+    <button routerLink="/upload" routerLinkActive="active" mat-button>
+      อัพโหลด
+    </button>
+    <button (click)="logout()" class="samathi-nav-logout" mat-button>
+      ออกจากระบบ
+    </button>
   </nav>
   <div class="main">
     <router-outlet></router-outlet>
