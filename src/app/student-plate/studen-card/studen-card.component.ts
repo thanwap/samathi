@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StudenCardComponent implements OnInit {
   @Input() student: Student;
+  @Input() public version: Text;
 
   constructor() { }
 

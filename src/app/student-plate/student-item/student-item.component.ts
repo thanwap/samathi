@@ -10,6 +10,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class StudentItemComponent implements OnInit {
   @Input() student: Student;
+  @Input() public version: Text;
   imageChangedEvent: any;
 
   form = new FormGroup({

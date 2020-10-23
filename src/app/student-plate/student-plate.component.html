@@ -1,6 +1,23 @@
 <div>
+  <form style="font-size: 10px" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>ชื่อรุ่น</mat-label>
+      <input
+        [(ngModel)]="version"
+        matInput
+        placeholder="ชื่อรุ่น"
+        type="text"
+        formControlName="version"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div>
   <div *ngFor="let student of students">
-    <app-student-item [student]="student"></app-student-item>
+    <app-student-item
+      [version]="version"
+      [student]="student"
+    ></app-student-item>
   </div>
 </div>
 <div class="container-button">
@@ -17,6 +34,6 @@
 </div>
 <div id="print-section">
   <div class="card-container" *ngFor="let student of students">
-    <app-studen-card [student]="student"></app-studen-card>
+    <app-studen-card [version]="version" [student]="student"></app-studen-card>
   </div>
 </div>
