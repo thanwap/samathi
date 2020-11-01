@@ -11,19 +11,19 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 export class StudentItemComponent implements OnInit {
   @Input() student: Student;
   @Input() public version: Text;
+  @Input() public index: number;
   imageChangedEvent: any;
 
   form = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
-    lastName: new FormControl(''),
     nameEn: new FormControl(''),
-    lastNameEn: new FormControl(''),
   });
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.index);
   }
 
   fileChangeEvent(event: any): void {

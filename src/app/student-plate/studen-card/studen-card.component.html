@@ -1,12 +1,17 @@
 <div class="card">
   <div class="card-title">{{ version }}</div>
   <div class="card-text">
-    <div>{{ student.name }} {{ student.lastName }}</div>
-    <div>{{ student.nameEn }} {{ student.lastNameEn }}</div>
-    <div>ภาคจันทร์ - ศุกร์</div>
+    <div>{{ student.name }}</div>
+    <div>{{ student.nameEn }}</div>
+    <div>ภาค จันทร์ - ศุกร์</div>
     <div>เลขที่ {{ student.id }}</div>
   </div>
   <div class="card-image">
-    <img style="width: 100%; height: auto" [src]="student.image" alt="" />
+    <img
+      *ngIf="student.image"
+      style="width: 100%; height: auto"
+      [src]="student.image"
+      alt=""
+    />
   </div>
 </div>

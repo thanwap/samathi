@@ -15,24 +15,30 @@ $card-image-width: 2.05cm;
   padding: $card-padding;
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  border: 1px solid #b0b0b0;
   font-family: 'THSarabunBold';
-  font-size: 18px;
+  font-size: 17px;
   overflow: hidden;
 
   .card-text {
     padding-left: 0.5cm;
-    padding-top: 3.0cm;
+    padding-top: 3.10cm;
     width: calc(#{$card-width} - #{$card-image-width});
+    line-height: 1.1em;
+
+    div {
+      min-height: 1.1em;
+      min-width: 1px;
+    }
   }
 
   .card-image {
-    padding-top: 2.6cm;
+    padding-top: 2.5cm;
     padding-right: 0.45cm;
     width: $card-image-width;
 
     img{
-      border: 2px solid gray;
+      border: 2px solid #b0b0b0;
     }
   }
 

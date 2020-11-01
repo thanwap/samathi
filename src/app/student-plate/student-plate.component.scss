@@ -1,15 +1,15 @@
-#print-section {}
+#print-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
 
 .card-container {
+  width: 8.6cm;
   float: left;
-  padding-right: 10px;
-  padding-right: 10px;
+  padding-right: 20px;
   padding-bottom: 10px;
 }
 
-.card-container::after {
-  clear: both;
-}
 
 .container-button {
   padding-top: 20px;

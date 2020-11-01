@@ -13,10 +13,11 @@
   </form>
 </div>
 <div>
-  <div *ngFor="let student of students">
+  <div *ngFor="let student of students; index as i">
     <app-student-item
       [version]="version"
       [student]="student"
+      [index]="i"
     ></app-student-item>
   </div>
 </div>
@@ -32,8 +33,9 @@
     print
   </button>
 </div>
-<div id="print-section">
+<div id="print-section" class="print-container">
   <div class="card-container" *ngFor="let student of students">
     <app-studen-card [version]="version" [student]="student"></app-studen-card>
   </div>
+  <div style="clear: both"></div>
 </div>

@@ -1,18 +1,6 @@
 <div class="container">
-  <div class="edit-image">
-    <div class="cropper">
-      <image-cropper
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [aspectRatio]="3 / 4"
-        format="png"
-        (imageCropped)="imageCropped($event)"
-        (imageLoaded)="imageLoaded()"
-        (cropperReady)="cropperReady()"
-        (loadImageFailed)="loadImageFailed()"
-      >
-      </image-cropper>
-    </div>
+  <div class="header-num">
+    <h1>{{ index + 1 }}.</h1>
   </div>
   <div>
     <form style="font-size: 10px" [formGroup]="form">
@@ -39,16 +27,6 @@
             formControlName="name"
           />
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>นามสกุล</mat-label>
-          <input
-            [(ngModel)]="student.lastName"
-            matInput
-            placeholder="นามสกุล"
-            type="text"
-            formControlName="lastName"
-          />
-        </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
@@ -61,20 +39,25 @@
             formControlName="nameEn"
           />
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Last Name</mat-label>
-          <input
-            [(ngModel)]="student.lastNameEn"
-            matInput
-            placeholder="Last Name"
-            type="text"
-            formControlName="lastNameEn"
-          />
-        </mat-form-field>
       </div>
     </form>
+  </div>
+  <div class="edit-image">
     <div>
       <input type="file" (change)="fileChangeEvent($event)" />
+    </div>
+    <div class="cropper">
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 4"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"
+      >
+      </image-cropper>
     </div>
   </div>
   <app-studen-card [version]="version" [student]="student"></app-studen-card>
