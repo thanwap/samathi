@@ -1,5 +1,5 @@
 <div>
-  <form style="font-size: 10px" [formGroup]="form">
+  <form style="padding-left: 40px; font-size: 13px" [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>ชื่อรุ่น</mat-label>
       <input
@@ -22,12 +22,14 @@
   </div>
 </div>
 <div class="container-button">
-  <button (click)="onAddStudent()" mat-button color="primary">เพิ่ม</button>
+  <button (click)="onAddStudent()" mat-raised-button color="primary">
+    เพิ่ม
+  </button>
   <button
     [useExistingCss]="true"
     printSectionId="print-section"
-    mat-button
-    color="primary"
+    mat-raised-button
+    color="accent"
     ngxPrint
   >
     print

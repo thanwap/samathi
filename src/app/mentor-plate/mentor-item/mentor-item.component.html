@@ -1,0 +1,38 @@
+<div>
+  <form class="container" style="font-size: 10px" [formGroup]="form">
+    <div class="header-num">
+      <h1>{{ index + 1 }}.</h1>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อเล่น</mat-label>
+          <input
+            [(ngModel)]="mentor.nickName"
+            matInput
+            placeholder="ชื่อเล่น"
+            type="text"
+            formControlName="nickName"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อจริง</mat-label>
+          <input
+            [(ngModel)]="mentor.name"
+            matInput
+            placeholder="ชื่อจริง"
+            type="text"
+            formControlName="name"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <app-mentor-card
+      [version]="version"
+      [versionDetail]="versionDetail"
+      [mentor]="mentor"
+    ></app-mentor-card>
+  </form>
+</div>

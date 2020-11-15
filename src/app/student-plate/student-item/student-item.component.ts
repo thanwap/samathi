@@ -18,12 +18,18 @@ export class StudentItemComponent implements OnInit {
     id: new FormControl(''),
     name: new FormControl(''),
     nameEn: new FormControl(''),
+    fileControl: new FormControl('')
   });
+
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.index);
+    // console.log(this.index);
+    // this.form.get('fileControl').valueChanges.subscribe((files: any) => {
+    //   console.log('yo', files);
+    //   this.fileChangeEvent(files);
+    // });
   }
 
   fileChangeEvent(event: any): void {

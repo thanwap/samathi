@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-title">
+    <span class="text">ครูสมาธิรุ่น </span>
+    <span class="verion">{{ version }}</span>
+    <span class="version-detail"> {{ versionDetail }}</span>
+  </div>
+  <div class="card-text">
+    <div class="nick-name">{{ mentor.nickName }}</div>
+    <div class="name">{{ mentor.name }}</div>
+  </div>
+  <div class="card-image">
+    <img
+      *ngIf="mentor.image"
+      style="width: 100%; height: auto"
+      [src]="mentor.image"
+      alt=""
+    />
+  </div>
+</div>

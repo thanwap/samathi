@@ -1,0 +1,76 @@
+$card-height: 5.3cm;
+$card-width: 8.6cm;
+$card-padding: 0cm;
+$card-image-width: 2.05cm;
+
+.card {
+  position: relative;
+  -webkit-print-color-adjust: exact !important;
+  height: calc(#{$card-height} - (2 * #{$card-padding}));
+  width: calc(#{$card-width} - (2 *#{$card-padding}));
+  background: url(../../../assets/img/plate/mentor_plate.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #4b4a4a;
+  padding: $card-padding;
+  border: 1px solid #b0b0b0;
+  font-size: 15px;
+  // overflow: hidden;
+  .card-title{
+    margin-top: 1.25cm;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    height: 0.8cm;
+  }
+
+  .card-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 3.3cm;
+  }
+
+  .card-image {
+    padding-top: 2.5cm;
+    padding-right: 0.45cm;
+    width: $card-image-width;
+
+    img{
+      border: 2px solid #b0b0b0;
+    }
+  }
+
+
+
+  .text {
+    font-size: 12px;
+    color: #B1A356;
+    font-family: 'rsubold';
+  }
+
+  .verion {
+    font-family: 'rsubold';
+    font-size: 25px;
+    color: #B1A356;
+  }
+
+  .version-detail{
+    font-family: 'rsubold';
+  }
+
+  .name {
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: 'rsubold';
+    line-height: 0.9em;
+  }
+
+  .nick-name{
+    font-family: 'rsubold';
+    font-weight: bolder;
+    font-size: 60px;
+    line-height: 0.9em;
+  }
+}

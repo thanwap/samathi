@@ -8,6 +8,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +41,10 @@ import { NgxPrintModule } from 'ngx-print';
 import { StudenCardComponent } from './student-plate/studen-card/studen-card.component';
 import { LoginComponent } from './login/login.component';
 import { MatCard, MatCardModule } from '@angular/material';
+import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
+import { MentorItemComponent } from './mentor-plate/mentor-item/mentor-item.component';
+import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +60,10 @@ import { MatCard, MatCardModule } from '@angular/material';
     StudentPlateComponent,
     StudentItemComponent,
     StudenCardComponent,
-    LoginComponent
+    LoginComponent,
+    MentorPlateComponent,
+    MentorItemComponent,
+    MentorCardComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +87,8 @@ import { MatCard, MatCardModule } from '@angular/material';
     DragDropModule,
     MatIconModule,
     ImageCropperModule,
-    NgxPrintModule
+    NgxPrintModule,
+    MaterialFileInputModule
   ],
   entryComponents: [
     DialogScheduleComponent

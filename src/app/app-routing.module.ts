@@ -1,3 +1,4 @@
+import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
@@ -13,6 +14,7 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent, canActivate: [AuthGuard] },
   { path: 'studentPlate', component: StudentPlateComponent, canActivate: [AuthGuard] },
+  { path: 'mentorPlate', component: MentorPlateComponent, canActivate: [AuthGuard] },
   { path: 'teacher-management', component: TeacherManagementComponent, canActivate: [AuthGuard] },
   { path: 'schedule-management', component: ScheduleManagementComponent, canActivate: [AuthGuard] },
   { path: 'upload', component: UploadComponent, canActivate: [AuthGuard] },
