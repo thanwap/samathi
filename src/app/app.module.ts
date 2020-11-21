@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -44,6 +45,8 @@ import { MatCard, MatCardModule } from '@angular/material';
 import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
 import { MentorItemComponent } from './mentor-plate/mentor-item/mentor-item.component';
 import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.component';
+import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-form.component';
+import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
 
 
 @NgModule({
@@ -63,7 +66,9 @@ import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.comp
     LoginComponent,
     MentorPlateComponent,
     MentorItemComponent,
-    MentorCardComponent
+    MentorCardComponent,
+    TeacherFormComponent,
+    TeacherListComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +93,8 @@ import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.comp
     MatIconModule,
     ImageCropperModule,
     NgxPrintModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    FlexLayoutModule
   ],
   entryComponents: [
     DialogScheduleComponent

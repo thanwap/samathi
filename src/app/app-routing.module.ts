@@ -1,3 +1,5 @@
+import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
+import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-form.component';
 import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
@@ -15,8 +17,24 @@ const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent, canActivate: [AuthGuard] },
   { path: 'studentPlate', component: StudentPlateComponent, canActivate: [AuthGuard] },
   { path: 'mentorPlate', component: MentorPlateComponent, canActivate: [AuthGuard] },
-  { path: 'teacher-management', component: TeacherManagementComponent, canActivate: [AuthGuard] },
-  { path: 'schedule-management', component: ScheduleManagementComponent, canActivate: [AuthGuard] },
+  {
+    path: 'teacher-management', component: TeacherManagementComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'list', component: TeacherListComponent },
+      { path: 'add', component: TeacherFormComponent },
+      { path: 'teacher/:id', component: TeacherFormComponent },
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: 'schedule-management', component: ScheduleManagementComponent, canActivate: [AuthGuard]
+
+  },
   { path: 'upload', component: UploadComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   {
