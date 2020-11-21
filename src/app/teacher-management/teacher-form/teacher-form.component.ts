@@ -10,6 +10,8 @@ import { TeacherService } from 'src/app/services/teacher.service';
 })
 export class TeacherFormComponent implements OnInit {
   mode = 'add';
+  files: File[] = [];
+  teacher: Teacher = new Teacher('', '', '', '', '', []);
   form = new FormGroup({
     id: new FormControl(''),
     prefix: new FormControl('', [Validators.required]),
@@ -27,13 +29,18 @@ export class TeacherFormComponent implements OnInit {
     if (this.mode === 'edit') {
       this.activatedRoute.params.subscribe(async params => {
         const teacher = await this.teacherService.getTeacherById(params.id);
+        this.teacher = teacher;
+        console.log(teacher);
         this.form.patchValue(teacher);
       });
     }
 
   }
 
-  save() {
+  async save() {
+    if (this.form.invalid) {
+      return;
+    }
     const teacherValue = this.form.value;
     const teacher = new Teacher(
       teacherValue.id,
@@ -43,9 +50,9 @@ export class TeacherFormComponent implements OnInit {
       teacherValue.phoneNumber
     );
     if (this.mode === 'add') {
-      this.teacherService.addTeacher(teacher);
+      await this.teacherService.addTeacher(teacher, this.files.length > 0 ? this.files[0] : null);
     } else {
-      this.teacherService.saveTeacher(teacher);
+      await this.teacherService.saveTeacher(teacher, this.files.length > 0 ? this.files[0] : null);
     }
     this.router.navigate(['../list'], { relativeTo: this.activatedRoute });
   }
@@ -53,5 +60,27 @@ export class TeacherFormComponent implements OnInit {
   cancle() {
     this.router.navigate(['../list'], { relativeTo: this.activatedRoute });
   }
+
+  onSelect(event) {
+    console.log(event);
+    const reader = new FileReader();
+    reader.readAsDataURL(event.addedFiles[0]);
+    reader.onload = () => this.teacher.images = [reader.result.toString()]
+
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  async uploadImages() {
+    const newPathFile = await this.teacherService.uploadImage(this.form.get('id').value, this.files[0]);
+    this.files = [];
+    this.teacher.images = [newPathFile];
+  }
+
+
 
 }

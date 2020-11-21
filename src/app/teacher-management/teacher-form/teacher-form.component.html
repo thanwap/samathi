@@ -1,61 +1,93 @@
-<div fxLayout="column" fxLayoutGap="20px">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>อาจารย์</mat-card-title>
-      <mat-card-subtitle>แก้ไข</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <form
-        fxLayout="row wrap"
-        fxLayoutGap="20px"
-        class="container"
-        [formGroup]="form"
-      >
-        <mat-form-field appearance="outline">
-          <mat-label>คำนำหน้า</mat-label>
-          <input
-            matInput
-            placeholder="ผู้บรรยาย"
-            type="text"
-            formControlName="prefix"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>ชื่อ</mat-label>
-          <input
-            matInput
-            placeholder="ชื่อ"
-            type="text"
-            formControlName="name"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>นามสกุล</mat-label>
-          <input
-            matInput
-            placeholder="นามสกุล"
-            type="text"
-            formControlName="lastName"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>เบอร์โทรศัพท์</mat-label>
-          <input
-            matInput
-            placeholder="เบอร์โทรศัพท์"
-            type="text"
-            formControlName="phoneNumber"
-          />
-        </mat-form-field>
-      </form>
-      <div fxLayout="row wrap" fxLayoutGap="20px">
-        <button (click)="save()" mat-raised-button color="primary">
-          บันทึก
-        </button>
-        <button (click)="cancle()" mat-raised-button color="accent">
-          ยกเลิก
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>อาจารย์</mat-card-title>
+        <mat-card-subtitle>แก้ไข</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="20px" class="container">
+          <mat-form-field appearance="outline">
+            <mat-label>คำนำหน้า</mat-label>
+            <input
+              matInput
+              placeholder="ผู้บรรยาย"
+              type="text"
+              formControlName="prefix"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ชื่อ</mat-label>
+            <input
+              matInput
+              placeholder="ชื่อ"
+              type="text"
+              formControlName="name"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>นามสกุล</mat-label>
+            <input
+              matInput
+              placeholder="นามสกุล"
+              type="text"
+              formControlName="lastName"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>เบอร์โทรศัพท์</mat-label>
+            <input
+              matInput
+              placeholder="เบอร์โทรศัพท์"
+              type="text"
+              formControlName="phoneNumber"
+            />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="teacher-image-card">
+      <mat-card-header>
+        <mat-card-title>รูปอาจารย์</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          *ngIf="teacher && teacher.images && teacher.images.length > 0"
+          mat-card-image
+          [src]="teacher.images[0]"
+          [alt]="teacher.name"
+        />
+        <img
+          *ngIf="!teacher || !teacher.images || teacher.images.length <= 0"
+          mat-card-image
+          src="assets/img/mock.jpg"
+          [alt]="teacher.name"
+        />
+      </mat-card-content>
+    </mat-card>
+    <div fxLayout="column" fxLayoutGap="20px">
+      <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone-label>อัพโหลดรูปภาพ</ngx-dropzone-label>
+        <ngx-dropzone-preview
+          *ngFor="let f of files"
+          [removable]="true"
+          (removed)="onRemove(f)"
+        >
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      </ngx-dropzone>
+    </div>
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="20px">
+          <button type="submit" mat-raised-button color="primary">
+            บันทึก
+          </button>
+          <button (click)="cancle()" mat-raised-button color="accent">
+            ยกเลิก
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>

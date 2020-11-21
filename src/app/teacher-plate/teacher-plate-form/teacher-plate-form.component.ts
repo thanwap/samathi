@@ -34,7 +34,7 @@ export class TeacherPlateFormComponent implements OnInit {
     private chapterService: ChapterService,
     private scheduleService: ScheduleService,
     private teacherPlateService: TeacherPlateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.chapterService.getChapters().then((result) => {
@@ -126,30 +126,30 @@ export class TeacherPlateFormComponent implements OnInit {
 
   loadSchedule() {
     this.scheduleService
-    .getScheduleByDate(moment(this.teacherForm.get('date').value).format("ddd DD MMM YY"))
-    .then((schedules) => {
-      if (schedules && schedules.length > 0) {
-        let s = schedules[0];
-        this.teacherForm.patchValue({
-          title: s.chapter ? s.chapter.name : '',
-          teacherName: s.teacher ? s.teacher.fullName : '',
-          bookNumber: s.chapter ? + s.chapter.name.substring(0, 1) : 1
-        });
-        if (s.teacher && s.teacher.fullName) {
-          let teacher = new Teacher(
-            '',
-            s.teacher.prefix,
-            s.teacher.name,
-            s.teacher.lastName
-          );
-          this.getBase64ImageFromUrl(
-            `./assets/img/teacher/${teacher.fullNameForPicture}.jpg`
-          ).then((x) => {
-            this.imageBase64String = x;
+      .getScheduleByDate(moment(this.teacherForm.get('date').value).format("ddd DD MMM YY"))
+      .then((schedules) => {
+        if (schedules && schedules.length > 0) {
+          let s = schedules[0];
+          this.teacherForm.patchValue({
+            title: s.chapter ? s.chapter.name : '',
+            teacherName: s.teacher ? s.teacher.fullName : '',
+            bookNumber: s.chapter ? + s.chapter.name.substring(0, 1) : 1
           });
+          if (s.teacher && s.teacher.fullName) {
+            let teacher = new Teacher(
+              '',
+              s.teacher.prefix,
+              s.teacher.name,
+              s.teacher.lastName
+            );
+            this.getBase64ImageFromUrl(
+              `./assets/img/teacher/${teacher.fullNameForPicture}.jpg`
+            ).then((x) => {
+              this.imageBase64String = x;
+            });
+          }
         }
-      }
-    });
+      });
   }
 
   async getBase64ImageFromUrl(imageUrl) {

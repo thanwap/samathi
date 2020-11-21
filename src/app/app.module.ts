@@ -7,6 +7,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
@@ -48,6 +50,7 @@ import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.comp
 import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-form.component';
 import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
 import { ConfirmDialogComponent } from './shared/dialog/confirm-dialog/confirm-dialog.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 @NgModule({
@@ -91,12 +94,14 @@ import { ConfirmDialogComponent } from './shared/dialog/confirm-dialog/confirm-d
     MatDialogModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     DragDropModule,
     MatIconModule,
     ImageCropperModule,
     NgxPrintModule,
     MaterialFileInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxDropzoneModule
   ],
   entryComponents: [
     DialogScheduleComponent,
