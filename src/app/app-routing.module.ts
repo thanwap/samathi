@@ -18,12 +18,12 @@ const routes: Routes = [
   { path: 'studentPlate', component: StudentPlateComponent, canActivate: [AuthGuard] },
   { path: 'mentorPlate', component: MentorPlateComponent, canActivate: [AuthGuard] },
   {
-    path: 'teacher-management', component: TeacherManagementComponent,
+    path: 'teacher', component: TeacherManagementComponent,
     canActivate: [AuthGuard],
     children: [
       { path: 'list', component: TeacherListComponent },
-      { path: 'add', component: TeacherFormComponent },
-      { path: 'teacher/:id', component: TeacherFormComponent },
+      { path: 'add', component: TeacherFormComponent, data: { mode: 'add' } },
+      { path: ':id', component: TeacherFormComponent, data: { mode: 'edit' } },
       {
         path: '',
         redirectTo: 'list',

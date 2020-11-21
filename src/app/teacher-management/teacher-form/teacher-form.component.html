@@ -1,1 +1,61 @@
-<p>teacher-form works!</p>
+<div fxLayout="column" fxLayoutGap="20px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>อาจารย์</mat-card-title>
+      <mat-card-subtitle>แก้ไข</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        fxLayout="row wrap"
+        fxLayoutGap="20px"
+        class="container"
+        [formGroup]="form"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>คำนำหน้า</mat-label>
+          <input
+            matInput
+            placeholder="ผู้บรรยาย"
+            type="text"
+            formControlName="prefix"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อ</mat-label>
+          <input
+            matInput
+            placeholder="ชื่อ"
+            type="text"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>นามสกุล</mat-label>
+          <input
+            matInput
+            placeholder="นามสกุล"
+            type="text"
+            formControlName="lastName"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>เบอร์โทรศัพท์</mat-label>
+          <input
+            matInput
+            placeholder="เบอร์โทรศัพท์"
+            type="text"
+            formControlName="phoneNumber"
+          />
+        </mat-form-field>
+      </form>
+      <div fxLayout="row wrap" fxLayoutGap="20px">
+        <button (click)="save()" mat-raised-button color="primary">
+          บันทึก
+        </button>
+        <button (click)="cancle()" mat-raised-button color="accent">
+          ยกเลิก
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

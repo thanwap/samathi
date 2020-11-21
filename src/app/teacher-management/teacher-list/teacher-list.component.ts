@@ -1,5 +1,7 @@
+import { ConfirmDialogComponent } from './../../shared/dialog/confirm-dialog/confirm-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher.service';
 
@@ -16,7 +18,9 @@ export class TeacherListComponent implements OnInit {
     name: new FormControl(''),
     nickName: new FormControl('')
   });
-  constructor(private teacherService: TeacherService,
+  constructor(
+    public dialog: MatDialog,
+    private teacherService: TeacherService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -34,11 +38,27 @@ export class TeacherListComponent implements OnInit {
   }
 
   editTeacher(id) {
-    this.router.navigate(['../teacher/' + id], { relativeTo: this.route });
+    this.router.navigate(['../' + id], { relativeTo: this.route });
   }
 
   deleteTeacher(id) {
+    this.openConfirmDialog(async () => {
+      await this.teacherService.deleteTeacher(id);
+      await this.find();
+    });
+  }
 
+  openConfirmDialog(callback: any): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: null
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && callback) {
+        callback();
+      }
+    });
   }
 
 }

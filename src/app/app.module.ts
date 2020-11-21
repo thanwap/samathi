@@ -47,6 +47,7 @@ import { MentorItemComponent } from './mentor-plate/mentor-item/mentor-item.comp
 import { MentorCardComponent } from './mentor-plate/mentor-card/mentor-card.component';
 import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-form.component';
 import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
+import { ConfirmDialogComponent } from './shared/dialog/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { TeacherListComponent } from './teacher-management/teacher-list/teacher-
     MentorItemComponent,
     MentorCardComponent,
     TeacherFormComponent,
-    TeacherListComponent
+    TeacherListComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ import { TeacherListComponent } from './teacher-management/teacher-list/teacher-
     FlexLayoutModule
   ],
   entryComponents: [
-    DialogScheduleComponent
+    DialogScheduleComponent,
+    ConfirmDialogComponent
   ],
   providers: [ThaiDatePipe, { provide: BUCKET, useValue: 'gs://samathi-f1b98.appspot.com' }],
   bootstrap: [AppComponent]
