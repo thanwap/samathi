@@ -1,3 +1,4 @@
+import { LoadingService } from './../loading.service';
 import { Teacher } from './../shared/models/teacher.model';
 import { Component, OnInit } from '@angular/core';
 import { ScheduleItem } from '../shared/models/schedule-item.model';
@@ -5,6 +6,7 @@ import { Chapter } from '../shared/models/chapter.model';
 import { ThaiDatePipe } from '../directives/thaidate.pipe';
 import { TeacherService } from '../services/teacher.service';
 import { ScheduleService } from '../services/schedule.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-upload',
@@ -17,10 +19,11 @@ export class UploadComponent implements OnInit {
   constructor(
     private thaiDatePipe: ThaiDatePipe,
     private teacherService: TeacherService,
-    private scheduleService: ScheduleService
-  ) {}
+    private scheduleService: ScheduleService,
+    private loadingService: LoadingService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   async fileChangeListener($event: any): Promise<void> {
     const files = $event.srcElement.files;
@@ -101,7 +104,7 @@ export class UploadComponent implements OnInit {
     return file.name.endsWith('.csv');
   }
 
-  fileReset() {}
+  fileReset() { }
 
   distinctTeacher(teachers: any) {
     let result = [];
@@ -130,5 +133,24 @@ export class UploadComponent implements OnInit {
 
     return result;
 
+  }
+
+  async mapScheduleTeacher() {
+    this.loadingService.setLoading();
+    const schedules = await this.scheduleService.listSchedule();
+    const teachers = await this.teacherService.getTeachers();
+    const teacherDic = teachers.reduce((p, c) => ({ ...p, [c.fullName]: c }), {});
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < schedules.length; i++) {
+      let schedule = schedules[i];
+      if (!schedule.teacher) { continue; }
+      const teacher = teacherDic[schedule.teacher.fullName];
+      if (!teacher) { continue; }
+      schedule.teacher.id = teacher.id;
+
+      await this.scheduleService.updateSchedule(schedule);
+    }
+    this.loadingService.setLoadingFinishMust();
   }
 }

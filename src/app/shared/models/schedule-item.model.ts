@@ -2,6 +2,7 @@ import { Chapter } from './chapter.model';
 import { Teacher } from './teacher.model';
 
 export class ScheduleItem {
+  public id: string;
   public date: string;
   public startTime: string;
   public finishTime: string;

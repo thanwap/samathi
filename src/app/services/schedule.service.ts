@@ -1,11 +1,13 @@
 import { ScheduleItem } from './../shared/models/schedule-item.model';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
+
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -29,16 +31,33 @@ export class ScheduleService {
 
   listSchedule() {
     return new Promise<ScheduleItem[]>((resolve, reject) => {
-      this.db.list<ScheduleItem>('/schedule_temp').valueChanges()
-        .subscribe(result => {
-          resolve(result);
+      this.db.list<ScheduleItem>('/schedule_temp').snapshotChanges().subscribe(action => {
+        let result: ScheduleItem[] = [];
+        action.forEach((x) => {
+          let item = <ScheduleItem>x.payload.val();
+          item.id = x.key;
+          result.push(item);
         });
+        resolve(result);
+      });
+      // this.db.list<ScheduleItem>('/schedule_temp').valueChanges()
+      //   .subscribe(result => {
+      //     console.log('result', result);
+      //     resolve(result);
+      //   });
     });
   }
 
   importSchedule(schedule: ScheduleItem[]) {
-    console.log(schedule);
     const itemRef = this.db.object('/schedule_temp');
     itemRef.set(schedule);
+  }
+
+  updateSchedule(schedule: any) {
+    return new Promise((resolve, reject) => {
+      this.db.object('schedule_temp/' + schedule.id).set(schedule).then(() => {
+        resolve();
+      }).catch(error => { reject(error); });
+    });
   }
 }
