@@ -1,5 +1,5 @@
 import { LoadingService } from './loading.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'samathi';
+  loadingStack = [];
 
   constructor(
+    private cdRef: ChangeDetectorRef,
     private auth: AngularFireAuth,
     private router: Router,
     public loadingSerivce: LoadingService) {
   }
   ngOnInit(): void {
+    this.loadingStack = this.loadingSerivce.loadingStack;
   }
 
   async logout() {

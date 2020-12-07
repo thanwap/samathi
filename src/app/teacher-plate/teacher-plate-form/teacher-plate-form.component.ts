@@ -37,13 +37,14 @@ export class TeacherPlateFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.chapterService.getChapters().then((result) => {
-    //   this.chapters = result;
-    // });
+    this.chapterService.getChapters().then((result) => {
+      this.chapters = result;
+      console.log(this.chapters);
+    });
 
-    // this.teacherService.getTeachers().then((result) => {
-    //   this.teachers = result;
-    // });
+    this.teacherService.getTeachers().then((result) => {
+      this.teachers = result;
+    });
 
     let plateInfo = this.teacherPlateService.getPlateInfo();
 

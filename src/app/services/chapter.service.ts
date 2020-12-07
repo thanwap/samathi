@@ -9,7 +9,7 @@ export class ChapterService {
 
   getChapters(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      this.db.list('/chapter_temp').snapshotChanges()
+      this.db.list('/chapter').snapshotChanges()
         .subscribe(result => {
           resolve(result.map((action) => {
             return { key: action.key, value: action.payload.val() };

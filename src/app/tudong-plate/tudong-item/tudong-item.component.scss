@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.edit-image {
+  padding-right: 15px;
+}
+
+.mat-form-field {
+  margin-right: 10px;
+}
+
+.cropper {
+  width: 180px;
+}
+
+.header-num{
+  align-self: center;
+  padding-right: 30px;
+}

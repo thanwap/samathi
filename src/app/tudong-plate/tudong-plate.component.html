@@ -1,0 +1,26 @@
+<div></div>
+<div>
+  <div *ngFor="let student of students; index as i">
+    <app-tudong-item [student]="student" [index]="i"></app-tudong-item>
+  </div>
+</div>
+<div class="container-button">
+  <button (click)="onAddStudent()" mat-raised-button color="primary">
+    เพิ่ม
+  </button>
+  <button
+    [useExistingCss]="true"
+    printSectionId="print-section"
+    mat-raised-button
+    color="accent"
+    ngxPrint
+  >
+    print
+  </button>
+</div>
+<div id="print-section" class="print-container">
+  <div class="card-container" *ngFor="let student of students">
+    <app-tudong-card [student]="student"></app-tudong-card>
+  </div>
+  <div style="clear: both"></div>
+</div>

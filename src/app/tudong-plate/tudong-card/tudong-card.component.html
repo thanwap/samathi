@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-text">
+    <div>{{ student.fullname }}</div>
+    <div>สาขา {{ student.branch }}</div>
+  </div>
+  <div class="card-image">
+    <img
+      *ngIf="student.image"
+      style="width: 100%; height: auto"
+      [src]="student.image"
+      alt=""
+    />
+  </div>
+</div>

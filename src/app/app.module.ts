@@ -51,6 +51,9 @@ import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-
 import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
 import { ConfirmDialogComponent } from './shared/dialog/confirm-dialog/confirm-dialog.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { TudongPlateComponent } from './tudong-plate/tudong-plate.component';
+import { TudongCardComponent } from './tudong-plate/tudong-card/tudong-card.component';
+import { TudongItemComponent } from './tudong-plate/tudong-item/tudong-item.component';
 
 
 @NgModule({
@@ -73,7 +76,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     MentorCardComponent,
     TeacherFormComponent,
     TeacherListComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TudongPlateComponent,
+    TudongCardComponent,
+    TudongItemComponent
   ],
   imports: [
     BrowserModule,

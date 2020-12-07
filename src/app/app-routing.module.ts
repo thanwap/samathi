@@ -1,3 +1,4 @@
+import { TudongItemComponent } from './tudong-plate/tudong-item/tudong-item.component';
 import { TeacherListComponent } from './teacher-management/teacher-list/teacher-list.component';
 import { TeacherFormComponent } from './teacher-management/teacher-form/teacher-form.component';
 import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
@@ -11,11 +12,13 @@ import { TeacherManagementComponent } from './teacher-management/teacher-managem
 import { StudentPlateComponent } from './student-plate/student-plate.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { TudongPlateComponent } from './tudong-plate/tudong-plate.component';
 
 
 const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent, canActivate: [AuthGuard] },
   { path: 'studentPlate', component: StudentPlateComponent, canActivate: [AuthGuard] },
+  { path: 'tudongPlate', component: TudongPlateComponent, canActivate: [AuthGuard] },
   { path: 'mentorPlate', component: MentorPlateComponent, canActivate: [AuthGuard] },
   {
     path: 'teacher', component: TeacherManagementComponent,

@@ -1,0 +1,52 @@
+<div>
+  <form class="container" style="font-size: 10px" [formGroup]="form">
+    <div class="header-num">
+      <h1>{{ index + 1 }}.</h1>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อ</mat-label>
+          <input
+            [(ngModel)]="student.fullname"
+            matInput
+            placeholder="ชื่อ"
+            type="text"
+            formControlName="fullname"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>สาขา</mat-label>
+          <input
+            [(ngModel)]="student.branch"
+            matInput
+            placeholder="สาขา"
+            type="text"
+            formControlName="branch"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="edit-image">
+      <div>
+        <input type="file" (change)="fileChangeEvent($event)" />
+      </div>
+      <div class="cropper">
+        <image-cropper
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="3 / 4"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()"
+          (loadImageFailed)="loadImageFailed()"
+        >
+        </image-cropper>
+      </div>
+    </div>
+    <app-tudong-card [student]="student"></app-tudong-card>
+  </form>
+</div>
