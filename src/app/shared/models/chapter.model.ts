@@ -9,3 +9,11 @@ export class Chapter {
       ? Number.parseFloat(minute.trim()) : 0;
   }
 }
+
+export interface IChapter {
+  id: string,
+  bookNo: string,
+  name: string,
+  no: string,
+  periodTime: number
+}

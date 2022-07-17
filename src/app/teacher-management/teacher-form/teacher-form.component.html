@@ -22,7 +22,7 @@
               matInput
               placeholder="ชื่อ"
               type="text"
-              formControlName="name"
+              formControlName="firstName"
             />
           </mat-form-field>
           <mat-form-field appearance="outline">
@@ -52,16 +52,9 @@
       </mat-card-header>
       <mat-card-content>
         <img
-          *ngIf="teacher && teacher.images && teacher.images.length > 0"
           mat-card-image
-          [src]="teacher.images[0]"
-          [alt]="teacher.name"
-        />
-        <img
-          *ngIf="!teacher || !teacher.images || teacher.images.length <= 0"
-          mat-card-image
-          src="assets/img/mock.jpg"
-          [alt]="teacher.name"
+          [src]="teacher.imagePath || 'assets/img/mock.jpg'"
+          [alt]="teacher.firstName"
         />
       </mat-card-content>
     </mat-card>

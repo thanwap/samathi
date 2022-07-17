@@ -15,8 +15,7 @@ export class TeacherListComponent implements OnInit {
   public displayedColumns: string[] = ['index', 'fullName', 'phoneNumber', 'actions'];
 
   form = new FormGroup({
-    name: new FormControl(''),
-    nickName: new FormControl('')
+    firstName: new FormControl('')
   });
   constructor(
     public dialog: MatDialog,
@@ -30,33 +29,33 @@ export class TeacherListComponent implements OnInit {
   }
 
   async find() {
-    this.teachers = await this.teacherService.findTeachers(this.form.get('name').value, '');
+    this.teachers = await this.teacherService.findTeachers(this.form.get('firstName').value);
   }
 
   addTeacher() {
     this.router.navigate(['../add'], { relativeTo: this.route });
   }
 
-  editTeacher(id) {
+  editTeacher(id: string) {
     this.router.navigate(['../' + id], { relativeTo: this.route });
   }
 
-  deleteTeacher(id) {
+  deleteTeacher(id: string) {
     this.openConfirmDialog(async () => {
       await this.teacherService.deleteTeacher(id);
       await this.find();
     });
   }
 
-  openConfirmDialog(callback: any): void {
+  openConfirmDialog(callback: () => Promise<void>): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
       data: null
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async (result) => {
       if (result && callback) {
-        callback();
+        await callback();
       }
     });
   }

@@ -53,8 +53,8 @@ export class ScheduleService {
     itemRef.set(schedule);
   }
 
-  updateSchedule(schedule: any) {
-    return new Promise((resolve, reject) => {
+  updateSchedule(schedule: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
       this.db.object('schedule_temp/' + schedule.id).set(schedule).then(() => {
         resolve();
       }).catch(error => { reject(error); });

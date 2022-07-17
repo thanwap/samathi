@@ -8,6 +8,7 @@ import { Teacher } from 'src/app/shared/models/teacher.model';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { TeacherPlateService } from 'src/app/services/teacher-plate.service';
 import * as moment from 'moment';
+import { IChapter } from 'src/app/shared/models/chapter.model';
 
 @Component({
   selector: "app-teacher-plate-form",
@@ -15,10 +16,10 @@ import * as moment from 'moment';
   styleUrls: ["./teacher-plate-form.component.scss"],
 })
 export class TeacherPlateFormComponent implements OnInit {
-  chapters: any;
+  chapters: IChapter[];
   imageChangedEvent: any = "";
   teachers: Teacher[];
-  imageBase64String: any = "";
+  imageBase64String: string | ArrayBuffer = "";
   teacherForm = new FormGroup({
     date: new FormControl(null),
     titleSelect: new FormControl(""),
@@ -39,7 +40,6 @@ export class TeacherPlateFormComponent implements OnInit {
   ngOnInit() {
     this.chapterService.getChapters().then((result) => {
       this.chapters = result;
-      console.log(this.chapters);
     });
 
     this.teacherService.getTeachers().then((result) => {
@@ -73,25 +73,33 @@ export class TeacherPlateFormComponent implements OnInit {
       this.loadSchedule();
     });
 
-    this.teacherForm.get('teacherNameSelect').valueChanges.subscribe((val) => {
-      this.teacherForm.patchValue({ teacherName: val });
+    this.teacherForm.get('teacherNameSelect').valueChanges.subscribe(async (val) => {
+      const teacher = this.teachers.find(x => x.id === val);
+      if (!teacher) {
+        return
+      }
+      this.teacherForm.patchValue({ teacherName: teacher.fullName });
+
+      const base64 = teacher.imagePath ? await this.getBase64ImageFromUrl(teacher.imagePath) : '';
+      if (!base64) {
+        this.teacherPlateService.setImage('');
+      }
+      this.imageBase64String = base64;
     });
 
-    this.teacherForm.get('titleSelect').valueChanges.subscribe((val) => {
-      this.teacherForm.patchValue({ title: val });
+    this.teacherForm.get('titleSelect').valueChanges.subscribe((key: string) => {
+      const chapter = this.chapters.find(x => x.id === key);
+      const chapterName = chapter ? chapter.name : '';
+      this.teacherForm.patchValue({ title:  chapterName});
 
-      if (val.length > 0) {
-        let firstLetter = val[0];
+      if (chapterName.length) {
+        let firstLetter = chapterName[0];
 
         if (Number(firstLetter)) {
           this.teacherPlateService.setBookNumber(+firstLetter);
           this.teacherForm.patchValue({ bookNumber: firstLetter });
         }
       }
-    });
-
-    this.teacherForm.get("teacherNameSelect").valueChanges.subscribe((val) => {
-      this.teacherForm.patchValue({ teacherName: val });
     });
   }
 
@@ -140,7 +148,7 @@ export class TeacherPlateFormComponent implements OnInit {
             let teacher = new Teacher(
               '',
               s.teacher.prefix,
-              s.teacher.name,
+              s.teacher.firstName,
               s.teacher.lastName
             );
             this.getBase64ImageFromUrl(
@@ -153,11 +161,11 @@ export class TeacherPlateFormComponent implements OnInit {
       });
   }
 
-  async getBase64ImageFromUrl(imageUrl) {
+  async getBase64ImageFromUrl(imageUrl: string): Promise<string | ArrayBuffer> {
     var res = await fetch(imageUrl);
     var blob = await res.blob();
 
-    return new Promise((resolve, reject) => {
+    return new Promise<string | ArrayBuffer> ((resolve, reject) => {
       var reader = new FileReader();
       reader.addEventListener(
         "load",

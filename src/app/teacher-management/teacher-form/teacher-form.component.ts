@@ -11,11 +11,11 @@ import { TeacherService } from 'src/app/services/teacher.service';
 export class TeacherFormComponent implements OnInit {
   mode = 'add';
   files: File[] = [];
-  teacher: Teacher = new Teacher('', '', '', '', '', []);
+  teacher: Teacher = new Teacher('', '', '', '', '', '');
   form = new FormGroup({
     id: new FormControl(''),
     prefix: new FormControl('', [Validators.required]),
-    name: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl(''),
   });
@@ -45,9 +45,9 @@ export class TeacherFormComponent implements OnInit {
     const teacher = new Teacher(
       teacherValue.id,
       teacherValue.prefix,
-      teacherValue.name,
+      teacherValue.firstName,
       teacherValue.lastName,
-      teacherValue.phoneNumber
+      teacherValue.phoneNumber,
     );
     if (this.mode === 'add') {
       await this.teacherService.addTeacher(teacher, this.files.length > 0 ? this.files[0] : null);
@@ -62,10 +62,9 @@ export class TeacherFormComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
     const reader = new FileReader();
     reader.readAsDataURL(event.addedFiles[0]);
-    reader.onload = () => this.teacher.images = [reader.result.toString()]
+    reader.onload = () => this.teacher.imagePath = reader.result.toString()
 
     this.files.push(...event.addedFiles);
   }
@@ -74,13 +73,4 @@ export class TeacherFormComponent implements OnInit {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-
-  async uploadImages() {
-    const newPathFile = await this.teacherService.uploadImage(this.form.get('id').value, this.files[0]);
-    this.files = [];
-    this.teacher.images = [newPathFile];
-  }
-
-
-
 }
