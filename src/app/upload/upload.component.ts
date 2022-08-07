@@ -6,7 +6,6 @@ import { Chapter } from '../shared/models/chapter.model';
 import { ThaiDatePipe } from '../directives/thaidate.pipe';
 import { TeacherService } from '../services/teacher.service';
 import { ScheduleService } from '../services/schedule.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-upload',
@@ -61,7 +60,7 @@ export class UploadComponent implements OnInit {
         });
         let s = [...scheduleList].concat(this.schedules);
         s = this.distinctSchedule(s);
-        this.scheduleService.importSchedule(s);
+        // this.scheduleService.importSchedule(s);
       };
 
       reader.onerror = () => {
@@ -144,12 +143,12 @@ export class UploadComponent implements OnInit {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < schedules.length; i++) {
       let schedule = schedules[i];
-      if (!schedule.teacher) { continue; }
-      const teacher = teacherDic[schedule.teacher.fullName];
-      if (!teacher) { continue; }
-      schedule.teacher.id = teacher.id;
+      // if (!schedule.teacher) { continue; }
+      // const teacher = teacherDic[schedule.teacher.fullName];
+      // if (!teacher) { continue; }
+      // schedule.teacher.id = teacher.id;
 
-      await this.scheduleService.updateSchedule(schedule);
+      // await this.scheduleService.updateSchedule(schedule);
     }
     this.loadingService.setLoadingFinishMust();
   }

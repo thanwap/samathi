@@ -134,25 +134,22 @@ export class TeacherPlateFormComponent implements OnInit {
   }
 
   loadSchedule() {
+    const today = moment(this.teacherForm.get('date').value).format("ddd MMM DD YYYY");
     this.scheduleService
-      .getScheduleByDate(moment(this.teacherForm.get('date').value).format("ddd DD MMM YY"))
+      .getScheduleByDate(today)
       .then((schedules) => {
         if (schedules && schedules.length > 0) {
-          let s = schedules[0];
+          const schedule = schedules[0];
+          const chapter = this.chapters.find(x => x.id === schedule.chapterId);
+          const teacher = this.teachers.find(x => x.id === schedule.teacherId);
           this.teacherForm.patchValue({
-            title: s.chapter ? s.chapter.name : '',
-            teacherName: s.teacher ? s.teacher.fullName : '',
-            bookNumber: s.chapter ? + s.chapter.name.substring(0, 1) : 1
+            title: chapter ? chapter.name : '',
+            teacherName: teacher ? teacher.fullName : '',
+            bookNumber: chapter ? chapter.bookNo : 1
           });
-          if (s.teacher && s.teacher.fullName) {
-            let teacher = new Teacher(
-              '',
-              s.teacher.prefix,
-              s.teacher.firstName,
-              s.teacher.lastName
-            );
+          if (teacher) {
             this.getBase64ImageFromUrl(
-              `./assets/img/teacher/${teacher.fullNameForPicture}.jpg`
+              teacher.imagePath
             ).then((x) => {
               this.imageBase64String = x;
             });

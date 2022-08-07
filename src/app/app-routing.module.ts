@@ -13,6 +13,8 @@ import { StudentPlateComponent } from './student-plate/student-plate.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { TudongPlateComponent } from './tudong-plate/tudong-plate.component';
+import { ScheduleListComponent } from './schedule-management/schedule-list/schedule-list.component';
+import { ScheduleFormComponent } from './schedule-management/schedule-form/schedule-form.component';
 
 
 const routes: Routes = [
@@ -35,8 +37,18 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'schedule-management', component: ScheduleManagementComponent, canActivate: [AuthGuard]
-
+    path: 'schedule', component: ScheduleManagementComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'list', component: ScheduleListComponent },
+      { path: 'add', component: ScheduleFormComponent, data: { mode: 'add' } },
+      { path: ':id', component: ScheduleFormComponent, data: { mode: 'edit' } },
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      }
+    ]
   },
   { path: 'upload', component: UploadComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },

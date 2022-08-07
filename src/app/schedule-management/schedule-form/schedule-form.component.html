@@ -1,0 +1,100 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>ตารางสอน</mat-card-title>
+        <mat-card-subtitle>แก้ไข</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="20px" class="container">
+          <mat-form-field appearance="outline">
+            <mat-label>วันที่สอน (เดือน/วัน/ปี)</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="วันที่สอน (เดือน/วัน/ปี)"
+              formControlName="date"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>เริ่ม</mat-label>
+            <input
+              matInput
+              [ngxTimepicker]="startPicker"
+              formControlName="start"
+            />
+            <ngx-material-timepicker #startPicker></ngx-material-timepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ถึง</mat-label>
+            <input
+              matInput
+              [ngxTimepicker]="finishPicker"
+              formControlName="finish"
+            />
+            <ngx-material-timepicker #finishPicker></ngx-material-timepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>บทเรียน</mat-label>
+            <input
+              type="text"
+              placeholder="บทเรียน"
+              matInput
+              formControlName="chapter"
+              [matAutocomplete]="chapterAuto"
+            />
+            <mat-autocomplete
+              #chapterAuto="matAutocomplete"
+              [displayWith]="displayChapterFn"
+            >
+              <mat-option
+                *ngFor="let option of filteredChapterOptions | async"
+                [value]="option"
+              >
+                {{ option.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>อาจารย์</mat-label>
+            <input
+              type="text"
+              placeholder="อาจารย์"
+              matInput
+              formControlName="teacher"
+              [matAutocomplete]="teacherAuto"
+            />
+            <mat-autocomplete
+              #teacherAuto="matAutocomplete"
+              [displayWith]="displayTeacherFn"
+            >
+              <mat-option
+                *ngFor="let option of filteredTeacherOptions | async"
+                [value]="option"
+              >
+                {{ option.fullName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="20px">
+          <button type="submit" mat-raised-button color="primary">
+            บันทึก
+          </button>
+          <button (click)="cancel()" mat-raised-button color="accent">
+            ยกเลิก
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>

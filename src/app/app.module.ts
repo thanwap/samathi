@@ -9,6 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
@@ -54,6 +56,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { TudongPlateComponent } from './tudong-plate/tudong-plate.component';
 import { TudongCardComponent } from './tudong-plate/tudong-card/tudong-card.component';
 import { TudongItemComponent } from './tudong-plate/tudong-item/tudong-item.component';
+import { ScheduleListComponent } from './schedule-management/schedule-list/schedule-list.component';
+import { ScheduleFormComponent } from './schedule-management/schedule-form/schedule-form.component';
 
 
 @NgModule({
@@ -79,7 +83,9 @@ import { TudongItemComponent } from './tudong-plate/tudong-item/tudong-item.comp
     ConfirmDialogComponent,
     TudongPlateComponent,
     TudongCardComponent,
-    TudongItemComponent
+    TudongItemComponent,
+    ScheduleListComponent,
+    ScheduleFormComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +107,7 @@ import { TudongItemComponent } from './tudong-plate/tudong-item/tudong-item.comp
     MatAutocompleteModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    NgxMaterialTimepickerModule,
     DragDropModule,
     MatIconModule,
     ImageCropperModule,

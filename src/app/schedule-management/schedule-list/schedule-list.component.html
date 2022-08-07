@@ -1,0 +1,104 @@
+<div fxLayout="column" fxLayoutGap="20px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>ตารางสอน</mat-card-title>
+      <mat-card-subtitle>ค้นหา</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="container" style="font-size: 10px" [formGroup]="searchForm">
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field>
+            <mat-label>ช่วงเวลา</mat-label>
+            <mat-select formControlName="periodSelect">
+              <mat-option *ngFor="let period of periods" [value]="period.value">
+                {{ period.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button
+              (click)="addSchedule()"
+              mat-fab
+              color="primary"
+              aria-label="Add"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <div>
+        <mat-table [dataSource]="schedules">
+          <ng-container matColumnDef="teacherId">
+            <mat-header-cell *matHeaderCellDef> Teacher Id </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.teacherId }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> วันที่ </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.start | thaidate: "full" }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="chapterName">
+            <mat-header-cell *matHeaderCellDef> หัวข้อ </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.chapterName }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="teacherName">
+            <mat-header-cell *matHeaderCellDef> ผู้บรรยาย </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.teacherName }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="teacherImage">
+            <mat-header-cell *matHeaderCellDef> รูป </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <img class="teacher-image" [src]="row.teacherImage" alt="" />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="teacherImagePath">
+            <mat-header-cell *matHeaderCellDef> Path </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.teacherImage }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let row; let i = index">
+              <button mat-icon-button (click)="editSchedule(row.id)">
+                <mat-icon aria-hidden="false" aria-label="edit">edit </mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteSchedule(row.id)">
+                <mat-icon aria-hidden="false" aria-label="delete">
+                  delete
+                </mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            [ngClass]="{
+              previous: row.dayStatus === 'previous',
+              today: row.dayStatus === 'today',
+              live: row.dayStatus === 'live'
+            }"
+            *matRowDef="let row; columns: displayedColumns"
+          ></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

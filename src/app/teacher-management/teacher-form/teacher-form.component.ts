@@ -57,7 +57,7 @@ export class TeacherFormComponent implements OnInit {
     this.router.navigate(['../list'], { relativeTo: this.activatedRoute });
   }
 
-  cancle() {
+  cancel() {
     this.router.navigate(['../list'], { relativeTo: this.activatedRoute });
   }
 
