@@ -6,6 +6,7 @@ import { resolve } from 'url';
 import { ISchedule, IScheduleRowData } from '../shared/models/schedule-model';
 import { LoadingService } from '../loading.service';
 import { Teacher } from '../shared/models/teacher.model';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,9 @@ export class ScheduleService {
             const chapterSnap = snap.val();
             item.chapterName = chapterSnap.name;
           });
+
+          item.startDate = moment(item.start);
+          item.finishDate = moment(item.finish);
 
           result.push(item);
         });

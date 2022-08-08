@@ -10,4 +10,6 @@ export interface IScheduleRowData extends ISchedule {
   teacherName: string,
   teacherImage: string,
   chapterName: string,
+  startDate: moment.Moment,
+  finishDate: moment.Moment
 }
