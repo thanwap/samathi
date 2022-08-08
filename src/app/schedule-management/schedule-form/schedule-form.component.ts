@@ -1,4 +1,4 @@
-import { Chapter, IChapter } from './../../shared/models/chapter.model';
+import { IChapter } from './../../shared/models/chapter.model';
 import { map, startWith } from 'rxjs/operators';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { Component, OnInit } from '@angular/core';
@@ -41,9 +41,6 @@ export class ScheduleFormComponent implements OnInit {
 
     this.chapterOptions = await this.chapterService.getChapters();
     this.teacherOptions = await this.teacherService.getTeachers();
-    console.log(this.chapterOptions);
-    console.log(this.teacherOptions);
-
 
     const chapterControl = this.form.get('chapter');
     const teacherControl = this.form.get('teacher');
@@ -58,7 +55,7 @@ export class ScheduleFormComponent implements OnInit {
     this.filteredTeacherOptions = teacherControl.valueChanges
     .pipe(
       startWith(''),
-      map(value => typeof value === 'string' ? value : value.name),
+      map(value => typeof value === 'string' ? value : value.fullName),
       map(value => value ? this._filterTeacher(value) : this.teacherOptions.slice())
     );
 

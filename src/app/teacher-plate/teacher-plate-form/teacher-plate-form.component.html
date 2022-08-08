@@ -12,13 +12,26 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>หัวข้อ</mat-label>
-        <mat-select formControlName="titleSelect">
-          <mat-option *ngFor="let chapter of chapters" [value]="chapter.id">
-            {{ chapter.name }}
+        <input
+          type="text"
+          placeholder="หัวข้อ"
+          matInput
+          formControlName="chapter"
+          [matAutocomplete]="chapterAuto"
+        />
+        <mat-autocomplete
+          #chapterAuto="matAutocomplete"
+          [displayWith]="displayChapterFn"
+        >
+          <mat-option
+            *ngFor="let option of filteredChapterOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
           </mat-option>
-        </mat-select>
+        </mat-autocomplete>
       </mat-form-field>
     </p>
     <p>
@@ -33,13 +46,26 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
-        <mat-label>ผู้บรรยาย</mat-label>
-        <mat-select formControlName="teacherNameSelect">
-          <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
-            {{ teacher.fullName }}
+      <mat-form-field appearance="outline">
+        <mat-label>อาจารย์</mat-label>
+        <input
+          type="text"
+          placeholder="อาจารย์"
+          matInput
+          formControlName="teacher"
+          [matAutocomplete]="teacherAuto"
+        />
+        <mat-autocomplete
+          #teacherAuto="matAutocomplete"
+          [displayWith]="displayTeacherFn"
+        >
+          <mat-option
+            *ngFor="let option of filteredTeacherOptions | async"
+            [value]="option"
+          >
+            {{ option.fullName }}
           </mat-option>
-        </mat-select>
+        </mat-autocomplete>
       </mat-form-field>
     </p>
     <p>
