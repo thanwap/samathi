@@ -33,7 +33,7 @@ export class ScheduleService {
     return new Promise<ISchedule[]>((resolve) => {
       this.db.list<ISchedule>('/schedule',
         ref => ref
-          .orderByChild('start').startAt(date).limitToFirst(1)).valueChanges()
+          .orderByChild('start').startAt(date).endAt(`${date}\uf8ff`).limitToFirst(1)).valueChanges()
         .subscribe(result => {
           resolve(result);
         });
