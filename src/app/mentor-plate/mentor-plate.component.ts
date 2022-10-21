@@ -11,7 +11,7 @@ export class MentorPlateComponent implements OnInit {
 
   mentors = [];
   version = '๔๗';
-  versionDetail = 'xxxx';
+  versionDetail = 'ชื่อรุ่น';
   form = new FormGroup({
     version: new FormControl(),
     versionDetail: new FormControl()
