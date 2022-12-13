@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class StudentPlateComponent implements OnInit {
   students = [];
-  version = 'รุ่นที่ 47 สิริญาณ';
+  version = 'รุ่นที่ 48 มงคลญาณ';
   form = new FormGroup({
     version: new FormControl()
   });

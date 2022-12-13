@@ -39,6 +39,28 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'ThaiSansNeueRegular';
+  src: url("assets/fonts//ThaiSansNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ThaiSansNeueBold';
+  src: url("assets/fonts//ThaiSansNeue-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ThaiSansNeueSemiBold';
+  src: url("assets/fonts//ThaiSansNeue-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: rsuregular, Roboto, "Helvetica Neue", sans-serif; }
 
