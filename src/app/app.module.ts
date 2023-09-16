@@ -48,7 +48,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { StudentPlateComponent } from './student-plate/student-plate.component';
 import { StudentItemComponent } from './student-plate/student-item/student-item.component';
 import { NgxPrintModule } from 'ngx-print';
-import { StudenCardComponent } from './student-plate/studen-card/studen-card.component';
+import { StudentCardComponent } from './student-plate/student-card/student-card.component';
 import { LoginComponent } from './login/login.component';
 import { MatCard, MatCardModule } from '@angular/material';
 import { MentorPlateComponent } from './mentor-plate/mentor-plate.component';
@@ -81,7 +81,7 @@ import { ScheduleFormComponent } from './schedule-management/schedule-form/sched
     DialogScheduleComponent,
     StudentPlateComponent,
     StudentItemComponent,
-    StudenCardComponent,
+    StudentCardComponent,
     LoginComponent,
     MentorPlateComponent,
     MentorItemComponent,

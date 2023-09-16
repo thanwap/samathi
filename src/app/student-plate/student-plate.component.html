@@ -37,7 +37,10 @@
 </div>
 <div id="print-section" class="print-container">
   <div class="card-container" *ngFor="let student of students">
-    <app-studen-card [version]="version" [student]="student"></app-studen-card>
+    <app-student-card
+      [version]="version"
+      [student]="student"
+    ></app-student-card>
   </div>
   <div style="clear: both"></div>
 </div>
