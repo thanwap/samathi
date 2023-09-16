@@ -18,21 +18,26 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TeacherPlateComponent } from './teacher-plate/teacher-plate.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TeacherPlateFormComponent } from './teacher-plate/teacher-plate-form/teacher-plate-form.component';
-import { TeacherPlateItemComponent } from './teacher-plate/teacher-plate-item/teacher-plate-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ThaiDatePipe } from './directives/thaidate.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+import { TeacherPlateComponent } from './teacher-plate/teacher-plate.component';
+import { TeacherPlateFormComponent } from './teacher-plate/teacher-plate-form/teacher-plate-form.component';
+import { TeacherPlateItemComponent } from './teacher-plate/teacher-plate-item/teacher-plate-item.component';
+
+import { TeacherPlate2Component } from './teacher-plate-2/teacher-plate-2.component';
+import { TeacherPlateForm2Component } from './teacher-plate-2/teacher-plate-form-2/teacher-plate-form-2.component';
+import { TeacherPlateItem2Component } from './teacher-plate-2/teacher-plate-item-2/teacher-plate-item-2.component';
+
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -66,6 +71,9 @@ import { ScheduleFormComponent } from './schedule-management/schedule-form/sched
     TeacherPlateComponent,
     TeacherPlateFormComponent,
     TeacherPlateItemComponent,
+    TeacherPlate2Component,
+    TeacherPlateForm2Component,
+    TeacherPlateItem2Component,
     ThaiDatePipe,
     ScheduleManagementComponent,
     TeacherManagementComponent,

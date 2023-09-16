@@ -1,0 +1,36 @@
+.teacher-plate-page {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+
+  .plate-item {
+    width: 50%;
+    max-width: 543px;
+  }
+
+  .plate-form {
+    width: 45%;
+  }
+}
+
+@media (max-width: 1320px) {
+  .teacher-plate-page {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-top: 50px;
+
+    .plate-item {
+      width: 100%;
+      max-width: 543px;
+    }
+
+    .plate-form {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}
