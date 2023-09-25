@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeacherPlateComponent } from './teacher-plate/teacher-plate.component';
 import { TeacherPlate2Component } from './teacher-plate-2/teacher-plate-2.component';
+import { TeacherPlate3Component } from './teacher-plate-3/teacher-plate-3.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { StudentPlateComponent } from './student-plate/student-plate.component';
 
@@ -21,6 +22,7 @@ import { ScheduleFormComponent } from './schedule-management/schedule-form/sched
 const routes: Routes = [
   { path: 'plate', component: TeacherPlateComponent, canActivate: [AuthGuard] },
   { path: 'plate2', component: TeacherPlate2Component, canActivate: [AuthGuard] },
+  { path: 'plate3', component: TeacherPlate3Component, canActivate: [AuthGuard] },
   { path: 'studentPlate', component: StudentPlateComponent, canActivate: [AuthGuard] },
   { path: 'tudongPlate', component: TudongPlateComponent, canActivate: [AuthGuard] },
   { path: 'mentorPlate', component: MentorPlateComponent, canActivate: [AuthGuard] },

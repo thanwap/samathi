@@ -38,6 +38,10 @@ import { TeacherPlate2Component } from './teacher-plate-2/teacher-plate-2.compon
 import { TeacherPlateForm2Component } from './teacher-plate-2/teacher-plate-form-2/teacher-plate-form-2.component';
 import { TeacherPlateItem2Component } from './teacher-plate-2/teacher-plate-item-2/teacher-plate-item-2.component';
 
+import { TeacherPlate3Component } from './teacher-plate-3/teacher-plate-3.component';
+import { TeacherPlateForm3Component } from './teacher-plate-3/teacher-plate-form-3/teacher-plate-form-3.component';
+import { TeacherPlateItem3Component } from './teacher-plate-3/teacher-plate-item-3/teacher-plate-item-3.component';
+
 import { ScheduleManagementComponent } from './schedule-management/schedule-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -74,6 +78,9 @@ import { ScheduleFormComponent } from './schedule-management/schedule-form/sched
     TeacherPlate2Component,
     TeacherPlateForm2Component,
     TeacherPlateItem2Component,
+    TeacherPlate3Component,
+    TeacherPlateForm3Component,
+    TeacherPlateItem3Component,
     ThaiDatePipe,
     ScheduleManagementComponent,
     TeacherManagementComponent,

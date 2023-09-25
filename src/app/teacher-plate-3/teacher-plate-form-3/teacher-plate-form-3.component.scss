@@ -1,0 +1,21 @@
+.teacher-plate-form-input {
+  background: #41A6F3;
+  position: relative;
+  padding: 20px 5%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+::ng-deep .mat-form-field{
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .teacher-plate-form-input {
+    background: #41A6F3;
+    position: relative;
+    padding: 20px 5%;
+    width: 90%;
+    margin: 0 auto;
+  }
+}

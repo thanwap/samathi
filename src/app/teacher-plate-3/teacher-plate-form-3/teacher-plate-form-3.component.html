@@ -1,0 +1,133 @@
+<div class="teacher-plate-form-input">
+  <form [formGroup]="teacherForm">
+    <p>
+      <mat-form-field>
+        <mat-label>วันที่ (เดือน/วัน/ปี)</mat-label>
+        <input matInput [matDatepicker]="pickerDate" formControlName="date" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerDate></mat-datepicker>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>หัวข้อ</mat-label>
+        <input
+          type="text"
+          placeholder="หัวข้อ"
+          matInput
+          formControlName="chapter"
+          [matAutocomplete]="chapterAuto"
+        />
+        <mat-autocomplete
+          #chapterAuto="matAutocomplete"
+          [displayWith]="displayChapterFn"
+        >
+          <mat-option
+            *ngFor="let option of filteredChapterOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>หัวข้อ</mat-label>
+        <input
+          matInput
+          placeholder="หัวข้อ"
+          type="text"
+          formControlName="title"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>อาจารย์</mat-label>
+        <input
+          type="text"
+          placeholder="อาจารย์"
+          matInput
+          formControlName="teacher"
+          [matAutocomplete]="teacherAuto"
+        />
+        <mat-autocomplete
+          #teacherAuto="matAutocomplete"
+          [displayWith]="displayTeacherFn"
+        >
+          <mat-option
+            *ngFor="let option of filteredTeacherOptions | async"
+            [value]="option"
+          >
+            {{ option.fullName }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>ผู้บรรยาย</mat-label>
+        <input
+          matInput
+          placeholder="ผู้บรรยาย"
+          type="text"
+          formControlName="teacherName"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>ขนาดกรอบ</mat-label>
+        <input
+          matInput
+          placeholder="ความกว้าง"
+          type="number"
+          formControlName="plateWidth"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>หนังสือครูสมาธิ เล่ม</mat-label>
+        <input
+          matInput
+          placeholder="เล่มที่"
+          type="number"
+          formControlName="bookNumber"
+        />
+      </mat-form-field>
+    </p>
+    <input type="file" (change)="fileChangeEvent($event)" />
+    <image-cropper
+      *ngIf="imageBase64String"
+      [autoCrop]="true"
+      [imageChangedEvent]="imageChangedEvent"
+      [imageBase64]="imageBase64String"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 3"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    >
+    </image-cropper>
+    <image-cropper
+      *ngIf="!imageBase64String"
+      [autoCrop]="true"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 3"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    >
+    </image-cropper>
+  </form>
+</div>
