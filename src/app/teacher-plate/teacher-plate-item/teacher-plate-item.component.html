@@ -1,8 +1,10 @@
 <div #plate [style.width.px]="plateInfo.plateWidth" class="plate plate-main">
-  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt="" /></div>
+  <div class="plate-head">
+    <img src="assets/img/plate/header3.jpg" alt="" />
+  </div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
-      <div>{{ plateInfo.date.toString() | thaidate: "full" }}</div>
+      <div>{{ plateInfo.date.toString() | thaidate : "full" }}</div>
       <div>หัวข้อ : {{ plateInfo.title }}</div>
       <div>ผู้บรรยาย : {{ plateInfo.teacherName }}</div>
     </div>
@@ -23,10 +25,12 @@
   [style.width.px]="plateInfo.plateWidth"
   class="plate plate-dummy"
 >
-  <div class="plate-head"><img src="assets/img/plate/header.jpg" alt="" /></div>
+  <div class="plate-head">
+    <img src="assets/img/plate/header3.jpg" alt="" />
+  </div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
-      <div>{{ plateInfo.date.toString() | thaidate: "full" }}</div>
+      <div>{{ plateInfo.date.toString() | thaidate : "full" }}</div>
       <div>หัวข้อ : {{ plateInfo.title }}</div>
       <div>ผู้บรรยาย : {{ plateInfo.teacherName }}</div>
     </div>
