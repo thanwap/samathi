@@ -15,33 +15,6 @@
     }
   }
 
-  .plate-detail-wrap {
-    position: relative;
-    margin-top: -11px;
-    padding-bottom: 10px;
-    background: white;
-    z-index: 200;
-  }
-
-  .plate-detail {
-    position: relative;
-    z-index: 1;
-    border-top: solid black 1px;
-    border-bottom: solid black 1px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
-    color: #180180;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 40px;
-    background: rgb(64,164,242);
-    background: -moz-linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    background: linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#40a4f2",endColorstr="#d6ebfc",GradientType=1);
-  }
-
   .plate-picture {
     position: relative;
     text-align: center;
@@ -60,35 +33,26 @@
     }
 
     img {
-      max-width: 380px;
-      width: auto;
+      width: 100%;
       height: auto;
       vertical-align: bottom;
     }
   }
 
   .plate-footer-wrap {
-    padding-top: 10px;
     position: relative;
     z-index: 5;
-    background: white;
+    background: #1171c5;
   }
 
   .plate-footer {
-    border-top: solid black 1px;
-    border-bottom: solid black 1px;
     text-align: center;
-    color: #180180;
-    font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 20px;
-    line-height: 40px;
-    background: rgb(64,164,242);
-    background: -moz-linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    background: linear-gradient(180deg, rgba(64,164,242,1) 0%, rgba(214,235,252,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#40a4f2",endColorstr="#d6ebfc",GradientType=1);
+    color: white;
+    font-weight: normal;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 20px;
   }
 }
 

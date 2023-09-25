@@ -42,32 +42,4 @@ export class TeacherPlateItem2Component implements OnInit {
       this.downloadLink.nativeElement.click();
     });
   }
-
-  sendToLine() {
-    let fileName = this.pipe.transform(this.plateInfo.date.toString(), 'short')
-      + ' ' + this.plateInfo.title + ' ' + this.plateInfo.teacherName + '.png';
-    const body = {
-      date: this.pipe.transform(this.plateInfo.date.toString(), 'thaidate'),
-      title: this.plateInfo.title,
-      teacher: this.plateInfo.teacherName,
-      imagePath: ''
-    };
-    console.log(body);
-    html2canvas(this.plateDummy.nativeElement, {
-      scrollY: 0,
-      scrollX: 0,
-    }).then(canvas => {
-      canvas.toBlob((file) => {
-        const ref = this.storage.ref('Plate/' + fileName);
-        const task = ref.put(file).then(x => {
-          console.log(x.ref.getDownloadURL().then(imagePath => {
-            body.imagePath = imagePath;
-            this.lineService.SendToLine(JSON.stringify(body)).subscribe(res => {
-
-            });
-          }));
-        });
-      }, 'image/png');
-    });
-  }
 }
